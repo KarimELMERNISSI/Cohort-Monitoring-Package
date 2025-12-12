@@ -1,0 +1,19 @@
+{
+    "session_id": "session_20251201_101334_data_1_gauche.xlsx",
+    "source_dataset": "data\\traces\\artifacts\\session_20251201_101334_data_1_gauche.xlsx\\source.xlsx",
+    "steps": [
+        {
+            "timestamp": "2025-12-01T10:13:34.045736",
+            "function": "initial_load",
+            "params": {
+                "filename": "data_1_gauche.xlsx",
+                "source_path": "data\\traces\\artifacts\\session_20251201_101334_data_1_gauche.xlsx\\source.xlsx"
+            },
+            "description": "Uploaded initial dataset: data_1_gauche.xlsx",
+            "output_dataset_path": null,
+            "stats_cat_path": null,
+            "stats_num_path": null,
+            "corr_matrix_path": null
+        }
+    ]
+}

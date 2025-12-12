@@ -1,0 +1,37 @@
+{
+    "session_id": "session_20251201_191047_data_1_gauche.xlsx",
+    "source_dataset": "data\\traces\\artifacts\\session_20251201_191047_data_1_gauche.xlsx\\source.xlsx",
+    "steps": [
+        {
+            "timestamp": "2025-12-01T19:10:47.072735",
+            "function": "initial_load",
+            "params": {
+                "filename": "data_1_gauche.xlsx",
+                "source_path": "data\\traces\\artifacts\\session_20251201_191047_data_1_gauche.xlsx\\source.xlsx"
+            },
+            "description": "Uploaded initial dataset: data_1_gauche.xlsx",
+            "output_dataset_path": null,
+            "stats_cat_path": null,
+            "stats_num_path": null,
+            "corr_matrix_path": null
+        },
+        {
+            "timestamp": "2025-12-01T19:11:39.895074",
+            "function": "imputation",
+            "params": {
+                "numerical_imputation_method": "MICE",
+                "categorical_imputation_method": "Most_Frequent",
+                "cat_encoder": false,
+                "num_scaler": false,
+                "remainder_columns": "auto",
+                "remainder_strategy": "passthrough",
+                "remainder_threshold": 0.3
+            },
+            "description": "Applied data imputation",
+            "output_dataset_path": "data/traces/snapshots\\20251201_191139_imputation.parquet",
+            "stats_cat_path": null,
+            "stats_num_path": null,
+            "corr_matrix_path": null
+        }
+    ]
+}

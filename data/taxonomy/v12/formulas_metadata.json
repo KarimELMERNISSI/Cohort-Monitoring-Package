@@ -1,0 +1,323 @@
+{
+  "age_calculation": {
+    "id": "age_calculation",
+    "name": "Age",
+    "description": "Calculates the subject's age at the time of the baseline visit.",
+    "expression": "Age = Year(B0 VISIT DATE) - Year(birthdate)",
+    "input_variables": [
+      "B0 VISIT DATE",
+      "birthdate"
+    ],
+    "output_variable": null
+  },
+  "body_mass_index": {
+    "id": "body_mass_index",
+    "name": "Body Mass Index (BMI)",
+    "description": "Calculates the Body Mass Index, a measure of body fat based on height and weight. Assumes height is in meters and weight is in kilograms.",
+    "expression": "BMI (kg/m^2) = Weight / (Height^2)",
+    "input_variables": [
+      "Weight",
+      "Height"
+    ],
+    "output_variable": null
+  },
+  "body_surface_area_mosteller": {
+    "id": "body_surface_area_mosteller",
+    "name": "Body Surface Area (BSA) - Mosteller Formula",
+    "description": "Estimates the total surface area of the human body. Commonly used to index cardiac parameters. Assumes height in cm and weight in kg.",
+    "expression": "BSA (m^2) = sqrt((Height * Weight) / 3600)",
+    "input_variables": [
+      "Height",
+      "Weight"
+    ],
+    "output_variable": null
+  },
+  "waist_to_hip_ratio": {
+    "id": "waist_to_hip_ratio",
+    "name": "Waist-to-Hip Ratio (WHR)",
+    "description": "A measure of body fat distribution and a predictor of health risk.",
+    "expression": "WHR = Waist / Hip",
+    "input_variables": [
+      "Waist",
+      "Hip"
+    ],
+    "output_variable": null
+  },
+  "pulse_pressure": {
+    "id": "pulse_pressure",
+    "name": "Pulse Pressure",
+    "description": "The difference between systolic and diastolic blood pressure, representing the force the heart generates each time it contracts.",
+    "expression": "Pulse Pressure (mmHg) = Systolic blood pressure - Diastolic blood pressure",
+    "input_variables": [
+      "Systolic blood pressure",
+      "Diastolic blood pressure"
+    ],
+    "output_variable": null
+  },
+  "mean_arterial_pressure": {
+    "id": "mean_arterial_pressure",
+    "name": "Mean Arterial Pressure (MAP)",
+    "description": "An average blood pressure in an individual during a single cardiac cycle.",
+    "expression": "MAP (mmHg) = Diastolic blood pressure + (1/3 * (Systolic blood pressure - Diastolic blood pressure))",
+    "input_variables": [
+      "Systolic blood pressure",
+      "Diastolic blood pressure"
+    ],
+    "output_variable": null
+  },
+  "egfr_ckd_epi": {
+    "id": "egfr_ckd_epi",
+    "name": "Estimated Glomerular Filtration Rate (eGFR) - CKD-EPI",
+    "description": "Estimates GFR from serum creatinine, age, and sex. The CKD-EPI 2021 equation is the current standard. The exact formula is complex and depends on creatinine levels relative to sex-specific constants.",
+    "expression": "eGFR = f(Creatinine, Age, sex)",
+    "input_variables": [
+      "Creatinine",
+      "birthdate",
+      "B0 VISIT DATE",
+      "sex"
+    ],
+    "output_variable": "GFR"
+  },
+  "ast_alt_ratio": {
+    "id": "ast_alt_ratio",
+    "name": "AST/ALT Ratio (De Ritis Ratio)",
+    "description": "The ratio of Aspartate Aminotransferase (AST) to Alanine Aminotransferase (ALT). It can help determine the cause of liver damage.",
+    "expression": "Ratio = ASAT / ALAT",
+    "input_variables": [
+      "ASAT",
+      "ALAT"
+    ],
+    "output_variable": null
+  },
+  "fib_4_score": {
+    "id": "fib_4_score",
+    "name": "FIB-4 Score for Liver Fibrosis",
+    "description": "A non-invasive score to estimate the degree of liver fibrosis in patients with liver disease.",
+    "expression": "FIB-4 = (Age * ASAT) / (Platelets * sqrt(ALAT))",
+    "input_variables": [
+      "birthdate",
+      "B0 VISIT DATE",
+      "ASAT",
+      "Platelets",
+      "ALAT"
+    ],
+    "output_variable": null
+  },
+  "homa_ir": {
+    "id": "homa_ir",
+    "name": "Homeostatic Model Assessment for Insulin Resistance (HOMA-IR)",
+    "description": "A method used to quantify insulin resistance and beta-cell function. Assumes glucose in mmol/L and insulin in mU/L.",
+    "expression": "HOMA-IR = (Fasting insulinemia * Fasting glycemia) / 22.5",
+    "input_variables": [
+      "Fasting insulinemia",
+      "Fasting glycemia"
+    ],
+    "output_variable": null
+  },
+  "non_hdl_cholesterol": {
+    "id": "non_hdl_cholesterol",
+    "name": "Non-HDL Cholesterol",
+    "description": "Calculates the total cholesterol minus HDL cholesterol, representing all atherogenic lipoprotein particles.",
+    "expression": "Non-HDLc = Cholesterol total - HDLc",
+    "input_variables": [
+      "Cholesterol total",
+      "HDLc"
+    ],
+    "output_variable": null
+  },
+  "atherogenic_index_of_plasma": {
+    "id": "atherogenic_index_of_plasma",
+    "name": "Atherogenic Index of Plasma (AIP)",
+    "description": "A strong marker to predict atherosclerosis and cardiovascular disease risk. Calculated on a logarithmic scale. Assumes Triglycerides and HDLc are in mmol/L.",
+    "expression": "AIP = log10(Triglycerides / HDLc)",
+    "input_variables": [
+      "Triglycerides",
+      "HDLc"
+    ],
+    "output_variable": null
+  },
+  "ejection_fraction_simpson": {
+    "id": "ejection_fraction_simpson",
+    "name": "Ejection Fraction (from Volumes)",
+    "description": "The volumetric fraction of blood pumped from the left ventricle with each heartbeat, calculated from end-diastolic and end-systolic volumes.",
+    "expression": "EF (%) = ((LVEDV - LVESV) / LVEDV) * 100",
+    "input_variables": [
+      "LVEDV",
+      "LVESV"
+    ],
+    "output_variable": "EFsimpson"
+  },
+  "stroke_volume_simpson": {
+    "id": "stroke_volume_simpson",
+    "name": "Stroke Volume (from Volumes)",
+    "description": "The volume of blood pumped from the left ventricle per beat.",
+    "expression": "SV (mL) = LVEDV - LVESV",
+    "input_variables": [
+      "LVEDV",
+      "LVESV"
+    ],
+    "output_variable": null
+  },
+  "stroke_volume_doppler": {
+    "id": "stroke_volume_doppler",
+    "name": "Stroke Volume (Doppler Method)",
+    "description": "The volume of blood pumped from the left ventricle per beat, calculated using the LVOT diameter and VTI.",
+    "expression": "SV (mL) = (\u03c0 * (LVOT / 2)^2) * LVOT VTI",
+    "input_variables": [
+      "LVOT",
+      "LVOT VTI"
+    ],
+    "output_variable": null
+  },
+  "cardiac_output_doppler": {
+    "id": "cardiac_output_doppler",
+    "name": "Cardiac Output (Doppler Method)",
+    "description": "The volume of blood pumped by the heart per minute, derived from stroke volume and heart rate.",
+    "expression": "CO (L/min) = (Stroke Volume * Heart rate) / 1000",
+    "input_variables": [
+      "LVOT",
+      "LVOT VTI",
+      "Heart rate"
+    ],
+    "output_variable": "COsimpson"
+  },
+  "e_a_ratio": {
+    "id": "e_a_ratio",
+    "name": "E/A Ratio",
+    "description": "Ratio of the early (E) to late (A) diastolic mitral inflow velocities, a measure of diastolic function.",
+    "expression": "Ratio = E / A",
+    "input_variables": [
+      "E",
+      "A"
+    ],
+    "output_variable": "EA"
+  },
+  "e_e_prime_ratio": {
+    "id": "e_e_prime_ratio",
+    "name": "E/e' Ratio (Average)",
+    "description": "Ratio of early mitral inflow velocity (E) to the average of septal and lateral mitral annular early diastolic velocities (e'). A key indicator of LV filling pressures.",
+    "expression": "E/e' = E / ((septE' + latE') / 2)",
+    "input_variables": [
+      "E",
+      "septE'",
+      "latE'"
+    ],
+    "output_variable": null
+  },
+  "relative_wall_thickness": {
+    "id": "relative_wall_thickness",
+    "name": "Relative Wall Thickness (RWT)",
+    "description": "An echocardiographic measurement used to classify the pattern of left ventricular hypertrophy.",
+    "expression": "RWT = (EDPWT + EDSWT) / LVEDD",
+    "input_variables": [
+      "EDPWT",
+      "EDSWT",
+      "LVEDD"
+    ],
+    "output_variable": null
+  },
+  "lv_mass_index": {
+    "id": "lv_mass_index",
+    "name": "Left Ventricular Mass Index (LVMI)",
+    "description": "Left ventricular mass, calculated using the Devereux formula, indexed to Body Surface Area (BSA) to assess for hypertrophy.",
+    "expression": "LVM = 0.8 * (1.04 * ((LVEDD + EDPWT + EDSWT)^3 - LVEDD^3)) + 0.6; LVMI = LVM / BSA",
+    "input_variables": [
+      "LVEDD",
+      "EDPWT",
+      "EDSWT",
+      "Height",
+      "Weight"
+    ],
+    "output_variable": null
+  },
+  "la_volume_index": {
+    "id": "la_volume_index",
+    "name": "Left Atrial Volume Index (LAVI)",
+    "description": "Left atrial volume indexed to Body Surface Area (BSA), a robust marker of chronic diastolic dysfunction and cardiovascular risk.",
+    "expression": "LAVI (mL/m^2) = LAV_ES_simpson / BSA",
+    "input_variables": [
+      "LAV_ES_simpson",
+      "Height",
+      "Weight"
+    ],
+    "output_variable": null
+  },
+  "average_gls": {
+    "id": "average_gls",
+    "name": "Average Global Longitudinal Strain (GLS)",
+    "description": "The average of longitudinal strain values from the 2, 3, and 4-chamber apical views, providing a comprehensive measure of left ventricular systolic function.",
+    "expression": "Average GLS = (GLS-2CH + GLS-3CH + GLS-4CH) / 3",
+    "input_variables": [
+      "GLS-2CH",
+      "GLS-3CH",
+      "GLS-4CH"
+    ],
+    "output_variable": "LV_peak_systolic_long_strain"
+  },
+  "average_gcs": {
+    "id": "average_gcs",
+    "name": "Average Global Circumferential Strain (GCS)",
+    "description": "The average of circumferential strain values from the basal, mid, and apical short-axis views.",
+    "expression": "Average GCS = (GCS_bas + GCS_mid + GCS_ap) / 3",
+    "input_variables": [
+      "GCS_bas",
+      "GCS_mid",
+      "GCS_ap"
+    ],
+    "output_variable": "LV_peak_systolic_circ_strain"
+  },
+  "cha2ds2_vasc_score": {
+    "id": "cha2ds2_vasc_score",
+    "name": "CHA2DS2-VASc Score",
+    "description": "A clinical prediction rule for estimating the risk of stroke in patients with non-valvular atrial fibrillation (AF).",
+    "expression": "Score based on: C(CHF: Dyspnea>I), H(Hypertension: SBP>140 or on meds), A2(Age\u226575), D(Diabetes), S2(Stroke: not available), V(Vascular Disease: not available), A(Age 65-74), Sc(Sex: female).",
+    "input_variables": [
+      "Dyspnea (NYHA)",
+      "Systolic blood pressure",
+      "ACEIs/ARBs",
+      "Beta-blockers",
+      "Calcium Channel Blockers",
+      "birthdate",
+      "B0 VISIT DATE",
+      "Type 2 diabetes",
+      "sex"
+    ],
+    "output_variable": null
+  },
+  "has_bled_score": {
+    "id": "has_bled_score",
+    "name": "HAS-BLED Score",
+    "description": "A clinical prediction rule for estimating the 1-year risk of major bleeding in patients on anticoagulation for atrial fibrillation (AF).",
+    "expression": "Score based on: H(Hypertension: SBP>160), A(Abnormal renal/liver function: GFR<60 or elevated liver enzymes), S(Stroke: not available), B(Bleeding history: not available), L(Labile INR: not available), E(Elderly: Age>65), D(Drugs/Alcohol).",
+    "input_variables": [
+      "Systolic blood pressure",
+      "GFR",
+      "ASAT",
+      "ALAT",
+      "birthdate",
+      "B0 VISIT DATE",
+      "Alcohol consumption"
+    ],
+    "output_variable": null
+  },
+  "cholesterol_conversion_gL_to_mmolL": {
+    "id": "cholesterol_conversion_gL_to_mmolL",
+    "name": "Cholesterol Unit Conversion (g/L to mmol/L)",
+    "description": "Converts cholesterol concentration from grams per liter (g/L) to millimoles per liter (mmol/L).",
+    "expression": "mmol/L = g/L * 2.586",
+    "input_variables": [
+      "Cholesterol total.1"
+    ],
+    "output_variable": "Cholesterol total"
+  },
+  "triglycerides_conversion_gL_to_mmolL": {
+    "id": "triglycerides_conversion_gL_to_mmolL",
+    "name": "Triglycerides Unit Conversion (g/L to mmol/L)",
+    "description": "Converts triglyceride concentration from grams per liter (g/L) to millimoles per liter (mmol/L).",
+    "expression": "mmol/L = g/L * 1.13",
+    "input_variables": [
+      "Triglycerides.2"
+    ],
+    "output_variable": "Triglycerides"
+  }
+}

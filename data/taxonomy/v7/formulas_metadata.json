@@ -1,0 +1,289 @@
+{
+  "age_calculation": {
+    "id": "age_calculation",
+    "name": "Age Calculation",
+    "description": "Calculates the subject's age at the time of the baseline visit.",
+    "expression": "Age = Year(B0 VISIT DATE) - Year(birthdate)",
+    "input_variables": [
+      "B0 VISIT DATE",
+      "birthdate"
+    ],
+    "output_variable": null
+  },
+  "bmi": {
+    "id": "bmi",
+    "name": "Body Mass Index (BMI)",
+    "description": "A measure of body fat based on height and weight.",
+    "expression": "BMI = Weight (kg) / (Height (m))^2",
+    "input_variables": [
+      "Weight",
+      "Height"
+    ],
+    "output_variable": null
+  },
+  "bsa_mosteller": {
+    "id": "bsa_mosteller",
+    "name": "Body Surface Area (Mosteller Formula)",
+    "description": "Calculates the total surface area of the human body, often used for indexing cardiac measurements.",
+    "expression": "BSA (m^2) = sqrt([Height (cm) * Weight (kg)] / 3600)",
+    "input_variables": [
+      "Height",
+      "Weight"
+    ],
+    "output_variable": null
+  },
+  "waist_hip_ratio": {
+    "id": "waist_hip_ratio",
+    "name": "Waist-to-Hip Ratio (WHR)",
+    "description": "A measure of body fat distribution and an indicator of health risk.",
+    "expression": "WHR = Waist (cm) / Hip (cm)",
+    "input_variables": [
+      "Waist",
+      "Hip"
+    ],
+    "output_variable": null
+  },
+  "egfr_ckd_epi_2021": {
+    "id": "egfr_ckd_epi_2021",
+    "name": "Estimated Glomerular Filtration Rate (CKD-EPI 2021)",
+    "description": "Estimates kidney function based on serum creatinine, age, and sex. This is the formula used to calculate the GFR variable.",
+    "expression": "142 * min(Creatinine/\u03ba, 1)^\u03b1 * max(Creatinine/\u03ba, 1)^-1.200 * 0.9938^Age * (1.012 if Female). [\u03ba and \u03b1 are constants dependent on sex and creatinine value]",
+    "input_variables": [
+      "Creatinine",
+      "sex",
+      "birthdate"
+    ],
+    "output_variable": "GFR"
+  },
+  "homa_ir": {
+    "id": "homa_ir",
+    "name": "Homeostatic Model Assessment for Insulin Resistance (HOMA-IR)",
+    "description": "A method used to quantify insulin resistance and beta-cell function.",
+    "expression": "HOMA-IR = (Fasting insulinemia (\u03bcU/L) * Fasting glycemia (mmol/L)) / 22.5",
+    "input_variables": [
+      "Fasting insulinemia",
+      "Fasting glycemia"
+    ],
+    "output_variable": null
+  },
+  "fib_4_score": {
+    "id": "fib_4_score",
+    "name": "Fibrosis-4 (FIB-4) Index for Liver Fibrosis",
+    "description": "A non-invasive score to estimate the degree of liver fibrosis in patients with liver disease.",
+    "expression": "FIB-4 = (Age * ASAT (U/L)) / (Platelets (10^9/L) * sqrt(ALAT (U/L)))",
+    "input_variables": [
+      "birthdate",
+      "ASAT",
+      "Platelets",
+      "ALAT"
+    ],
+    "output_variable": null
+  },
+  "de_ritis_ratio": {
+    "id": "de_ritis_ratio",
+    "name": "De Ritis Ratio (AST/ALT)",
+    "description": "The ratio of Aspartate Aminotransferase (AST) to Alanine Aminotransferase (ALT). It can be used in the diagnosis of certain liver diseases.",
+    "expression": "Ratio = ASAT / ALAT",
+    "input_variables": [
+      "ASAT",
+      "ALAT"
+    ],
+    "output_variable": null
+  },
+  "friedewald_ldlc": {
+    "id": "friedewald_ldlc",
+    "name": "LDL Cholesterol (Friedewald Formula)",
+    "description": "An estimation of Low-Density Lipoprotein cholesterol. It is generally valid when Triglycerides are below 4.5 mmol/L.",
+    "expression": "LDLc (mmol/L) = Cholesterol total (mmol/L) - HDLc (mmol/L) - (Triglycerides (mmol/L) / 2.2)",
+    "input_variables": [
+      "Cholesterol total",
+      "HDLc",
+      "Triglycerides"
+    ],
+    "output_variable": "LDLc"
+  },
+  "non_hdl_cholesterol": {
+    "id": "non_hdl_cholesterol",
+    "name": "Non-HDL Cholesterol",
+    "description": "Calculates the total cholesterol minus the high-density lipoprotein cholesterol, representing all atherogenic lipoprotein particles.",
+    "expression": "Non-HDLc = Cholesterol total - HDLc",
+    "input_variables": [
+      "Cholesterol total",
+      "HDLc"
+    ],
+    "output_variable": null
+  },
+  "map": {
+    "id": "map",
+    "name": "Mean Arterial Pressure (MAP)",
+    "description": "The average arterial pressure throughout one cardiac cycle, systole, and diastole.",
+    "expression": "MAP = Diastolic blood pressure + 1/3 * (Systolic blood pressure - Diastolic blood pressure)",
+    "input_variables": [
+      "Systolic blood pressure",
+      "Diastolic blood pressure"
+    ],
+    "output_variable": null
+  },
+  "pulse_pressure": {
+    "id": "pulse_pressure",
+    "name": "Pulse Pressure (PP)",
+    "description": "The difference between systolic and diastolic blood pressure.",
+    "expression": "PP = Systolic blood pressure - Diastolic blood pressure",
+    "input_variables": [
+      "Systolic blood pressure",
+      "Diastolic blood pressure"
+    ],
+    "output_variable": null
+  },
+  "ejection_fraction_from_volumes": {
+    "id": "ejection_fraction_from_volumes",
+    "name": "Ejection Fraction (from Volumes)",
+    "description": "Calculates the percentage of blood leaving the left ventricle with each contraction, based on end-diastolic and end-systolic volumes.",
+    "expression": "EF (%) = ((LVEDV - LVESV) / LVEDV) * 100",
+    "input_variables": [
+      "LVEDV",
+      "LVESV"
+    ],
+    "output_variable": "EFsimpson"
+  },
+  "stroke_volume_from_volumes": {
+    "id": "stroke_volume_from_volumes",
+    "name": "Stroke Volume (from Volumes)",
+    "description": "The volume of blood pumped from the left ventricle per beat.",
+    "expression": "SV (mL) = LVEDV - LVESV",
+    "input_variables": [
+      "LVEDV",
+      "LVESV"
+    ],
+    "output_variable": null
+  },
+  "stroke_volume_from_lvot": {
+    "id": "stroke_volume_from_lvot",
+    "name": "Stroke Volume (from LVOT)",
+    "description": "Calculates stroke volume using the Left Ventricular Outflow Tract (LVOT) diameter and Velocity Time Integral (VTI).",
+    "expression": "SV (mL) = 0.785 * (LVOT (cm))^2 * LVOT VTI (cm)",
+    "input_variables": [
+      "LVOT",
+      "LVOT VTI"
+    ],
+    "output_variable": null
+  },
+  "cardiac_output_from_lvot": {
+    "id": "cardiac_output_from_lvot",
+    "name": "Cardiac Output (from LVOT)",
+    "description": "Calculates the volume of blood the heart pumps per minute using the LVOT method.",
+    "expression": "CO (L/min) = (Stroke Volume from LVOT (mL) * Heart rate) / 1000",
+    "input_variables": [
+      "LVOT",
+      "LVOT VTI",
+      "Heart rate"
+    ],
+    "output_variable": "COsimpson"
+  },
+  "e_e_prime_ratio": {
+    "id": "e_e_prime_ratio",
+    "name": "E/e' Ratio (Diastolic Function)",
+    "description": "A key echocardiographic measure for estimating LV filling pressures. An average of septal and lateral e' is typically used.",
+    "expression": "E/e' average = E / ((septE' + latE') / 2)",
+    "input_variables": [
+      "E",
+      "septE'",
+      "latE'"
+    ],
+    "output_variable": null
+  },
+  "lavi": {
+    "id": "lavi",
+    "name": "Left Atrial Volume Index (LAVI)",
+    "description": "Left atrial volume indexed to body surface area (BSA) to assess left atrial size.",
+    "expression": "LAVI (mL/m^2) = LAV_ES_simpson / BSA",
+    "input_variables": [
+      "LAV_ES_simpson",
+      "Height",
+      "Weight"
+    ],
+    "output_variable": null
+  },
+  "lvm_ase": {
+    "id": "lvm_ase",
+    "name": "Left Ventricular Mass (ASE formula)",
+    "description": "Calculates the mass of the left ventricle using a linear method recommended by the American Society of Echocardiography (ASE).",
+    "expression": "LVM (g) = 0.8 * (1.04 * [(LVEDD + EDPWT + EDSWT)^3 - LVEDD^3]) + 0.6",
+    "input_variables": [
+      "LVEDD",
+      "EDPWT",
+      "EDSWT"
+    ],
+    "output_variable": null
+  },
+  "rwt": {
+    "id": "rwt",
+    "name": "Relative Wall Thickness (RWT)",
+    "description": "A measure used to classify the pattern of left ventricular hypertrophy.",
+    "expression": "RWT = (EDPWT + EDSWT) / LVEDD",
+    "input_variables": [
+      "EDPWT",
+      "EDSWT",
+      "LVEDD"
+    ],
+    "output_variable": null
+  },
+  "h2f_pef_score": {
+    "id": "h2f_pef_score",
+    "name": "H2F-PEF Score for HFpEF Diagnosis",
+    "description": "A clinical score to estimate the probability of Heart Failure with Preserved Ejection Fraction (HFpEF).",
+    "expression": "Points-based score: BMI > 30 (2 pts), Using >=2 antihypertensives (1 pt), Atrial Fibrillation (3 pts), Age > 60 (1 pt), E/e' ratio > 9 (1 pt), Estimated PASP (from TR Vmax) > 35 mmHg (1 pt).",
+    "input_variables": [
+      "Weight",
+      "Height",
+      "ACEIs/ARBs",
+      "Palpitations",
+      "birthdate",
+      "E",
+      "septE'",
+      "latE'",
+      "TR Vmax"
+    ],
+    "output_variable": null
+  },
+  "cholesterol_mmol_to_g": {
+    "id": "cholesterol_mmol_to_g",
+    "name": "Cholesterol Unit Conversion (mmol/L to g/L)",
+    "description": "Converts total cholesterol from mmol/L to g/L.",
+    "expression": "g/L = mmol/L * 0.3867",
+    "input_variables": [
+      "Cholesterol total"
+    ],
+    "output_variable": "Cholesterol total.1"
+  },
+  "hdl_mmol_to_g": {
+    "id": "hdl_mmol_to_g",
+    "name": "HDL Cholesterol Unit Conversion (mmol/L to g/L)",
+    "description": "Converts HDL cholesterol from mmol/L to g/L.",
+    "expression": "g/L = mmol/L * 0.3867",
+    "input_variables": [
+      "HDLc"
+    ],
+    "output_variable": "HDLc.1"
+  },
+  "ldl_mmol_to_g": {
+    "id": "ldl_mmol_to_g",
+    "name": "LDL Cholesterol Unit Conversion (mmol/L to g/L)",
+    "description": "Converts LDL cholesterol from mmol/L to g/L.",
+    "expression": "g/L = mmol/L * 0.3867",
+    "input_variables": [
+      "LDLc"
+    ],
+    "output_variable": "LDLc.1"
+  },
+  "triglycerides_mmol_to_g": {
+    "id": "triglycerides_mmol_to_g",
+    "name": "Triglycerides Unit Conversion (mmol/L to g/L)",
+    "description": "Converts triglycerides from mmol/L to g/L.",
+    "expression": "g/L = mmol/L * 0.8857",
+    "input_variables": [
+      "Triglycerides"
+    ],
+    "output_variable": "Triglycerides.2"
+  }
+}

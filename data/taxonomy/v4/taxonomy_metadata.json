@@ -1,0 +1,1340 @@
+{
+  "subject_id": {
+    "standard_name": "Subject Identifier",
+    "description": "A unique identifier assigned to each participant in the study.",
+    "category": "Identifier",
+    "related_formulas": [
+      "Identifier: Not used in medical formulas."
+    ],
+    "clinical_usage": "Used for data management, tracking participants over time, and linking different data points (e.g., lab results, imaging, clinical visits) to the same individual while maintaining confidentiality.",
+    "node_type": "Input",
+    "relationships": []
+  },
+  "birthdate": {
+    "standard_name": "Date of Birth",
+    "description": "The birth date of the study participant.",
+    "category": "Demographics",
+    "related_formulas": [
+      "Parameter in: Age Calculation (Age = Current Date - Date of Birth). Age is then used in numerous scores (e.g., ASCVD Risk Score, Framingham Risk Score, CKD-EPI for GFR)."
+    ],
+    "clinical_usage": "Essential for calculating the subject's age, which is a critical factor in risk stratification, interpreting age-dependent lab values, and assessing disease prevalence.",
+    "node_type": "Input",
+    "relationships": [
+      "GFR"
+    ]
+  },
+  "sex": {
+    "standard_name": "Sex",
+    "description": "The biological sex of the study participant.",
+    "category": "Demographics",
+    "related_formulas": [
+      "Parameter in: Glomerular Filtration Rate equations (e.g., CKD-EPI, MDRD), Cardiovascular Risk Scores (e.g., ASCVD, Framingham), Body Surface Area (BSA) formulas, and reference range determination for many lab values."
+    ],
+    "clinical_usage": "A fundamental demographic variable used to interpret sex-specific lab reference ranges, assess risk for sex-predominant diseases, and understand disease pathophysiology.",
+    "node_type": "Input",
+    "relationships": [
+      "GFR"
+    ]
+  },
+  "Alcohol consumption": {
+    "standard_name": "Alcohol Consumption Status",
+    "description": "Information regarding the participant's consumption of alcoholic beverages.",
+    "category": "Lifestyle",
+    "related_formulas": [
+      "Parameter in: Various cardiovascular and liver disease risk scores and lifestyle assessment tools."
+    ],
+    "clinical_usage": "Assesses a key lifestyle risk factor for numerous conditions, including liver disease, pancreatitis, certain cancers, and cardiovascular diseases like hypertension and alcoholic cardiomyopathy.",
+    "node_type": "Input",
+    "relationships": [
+      "ALAT",
+      "ASAT",
+      "Gamma-GT",
+      "Triglycerides"
+    ]
+  },
+  "Other addictive behaviors": {
+    "standard_name": "Other Addictive Behaviors",
+    "description": "Presence or history of addictive behaviors other than alcohol or smoking.",
+    "category": "Lifestyle",
+    "related_formulas": [
+      "Parameter in: Comprehensive risk assessment models, though not typically in standard quantitative formulas."
+    ],
+    "clinical_usage": "Provides a broader context of the patient's health and potential confounding factors. It is crucial for psychiatric assessment and managing complex medical conditions.",
+    "node_type": "Input",
+    "relationships": [
+      "Alcohol consumption",
+      "Smoking"
+    ]
+  },
+  "Smoking": {
+    "standard_name": "Smoking Status",
+    "description": "Information regarding the participant's current or past smoking habits.",
+    "category": "Lifestyle",
+    "related_formulas": [
+      "Parameter in: Cardiovascular Risk Scores (e.g., ASCVD Pooled Cohort Equations, Framingham Risk Score, SCORE2)."
+    ],
+    "clinical_usage": "Identifies a major modifiable risk factor for cardiovascular disease, chronic obstructive pulmonary disease (COPD), and various cancers. Smoking status influences treatment decisions and prognosis.",
+    "node_type": "Input",
+    "relationships": [
+      "us-CRP",
+      "Other addictive behaviors"
+    ]
+  },
+  "ALAT": {
+    "standard_name": "Alanine Aminotransferase",
+    "description": "A blood test measuring the level of Alanine Aminotransferase (ALT), an enzyme primarily found in the liver.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Parameter in: De Ritis Ratio (ASAT/ALAT), FIB-4 Index for Liver Fibrosis."
+    ],
+    "clinical_usage": "Used to detect and monitor liver damage or disease (e.g., hepatitis, fatty liver disease, drug-induced liver injury). Elevated levels indicate liver cell inflammation or damage.",
+    "node_type": "Input",
+    "relationships": [
+      "ASAT",
+      "ALP",
+      "Gamma-GT"
+    ]
+  },
+  "Albumin to creatinine ratio": {
+    "standard_name": "Urine Albumin-to-Creatinine Ratio (UACR)",
+    "description": "A ratio used to detect elevated protein in the urine (albuminuria), often an early sign of kidney damage.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Result of: Urine Albumin-to-Creatinine Ratio (UACR) = Urine Albumin / Urine Creatinine. Used to stage Chronic Kidney Disease (CKD)."
+    ],
+    "clinical_usage": "A key screening and monitoring tool for kidney damage, particularly in patients with diabetes and hypertension. An elevated UACR is an early sign of diabetic nephropathy.",
+    "node_type": "Derived",
+    "relationships": [
+      "Creatinine",
+      "GFR"
+    ]
+  },
+  "ALP": {
+    "standard_name": "Alkaline Phosphatase",
+    "description": "A blood test measuring the level of Alkaline Phosphatase, an enzyme found throughout the body, particularly in the liver, bones, and digestive system.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Diagnostic marker for hepatobiliary and bone disorders. Not typically a parameter in common formulas."
+    ],
+    "clinical_usage": "Used to diagnose and monitor diseases of the liver, bile ducts (e.g., cholestasis, obstruction), or bones (e.g., Paget's disease, fractures, bone tumors).",
+    "node_type": "Input",
+    "relationships": [
+      "ALAT",
+      "ASAT",
+      "Gamma-GT"
+    ]
+  },
+  "ASAT": {
+    "standard_name": "Aspartate Aminotransferase",
+    "description": "A blood test measuring the level of Aspartate Aminotransferase (AST), an enzyme found in the liver, heart, and other muscles.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Parameter in: De Ritis Ratio (ASAT/ALAT), FIB-4 Index, APRI (AST to Platelet Ratio Index)."
+    ],
+    "clinical_usage": "Used alongside ALT to assess liver injury. The AST/ALT ratio can help differentiate between different causes of liver damage (e.g., alcoholic vs. viral hepatitis). It can also be elevated in muscle or heart injury.",
+    "node_type": "Input",
+    "relationships": [
+      "ALAT",
+      "ALP",
+      "Gamma-GT",
+      "CPK"
+    ]
+  },
+  "Cholesterol total": {
+    "standard_name": "Total Cholesterol",
+    "description": "Baseline measurement of the total amount of cholesterol in the blood.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Parameter in: Friedewald Formula (for LDLc), Non-HDL Cholesterol Calculation, Total Cholesterol/HDLc Ratio, Cardiovascular Risk Scores (ASCVD, Framingham).",
+      "Conversion: 1 mmol/L = 38.67 mg/dL",
+      "Conversion: 1 mg/dL = 0.02586 mmol/L"
+    ],
+    "clinical_usage": "A fundamental component of a lipid panel used to assess cardiovascular disease risk and guide treatment decisions, such as the initiation of statin therapy.",
+    "node_type": "Input",
+    "relationships": [
+      "HDLc",
+      "LDLc",
+      "Triglycerides",
+      "Cholesterol total.1",
+      "Cholesterol total.2"
+    ]
+  },
+  "Cholesterol total.1": {
+    "standard_name": "Total Cholesterol (Follow-up 1)",
+    "description": "A subsequent measurement of the total amount of cholesterol in the blood.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Follow-up measurement. Used to calculate change from baseline: \u0394 = (Value at Follow-up 1) - (Value at Baseline)."
+    ],
+    "clinical_usage": "Used to monitor the effectiveness of lifestyle modifications or lipid-lowering therapies (e.g., statins) over time.",
+    "node_type": "Input",
+    "relationships": [
+      "HDLc.1",
+      "LDLc.1",
+      "Triglycerides.1",
+      "Cholesterol total",
+      "Cholesterol total.2"
+    ]
+  },
+  "Cholesterol total.2": {
+    "standard_name": "Total Cholesterol (Follow-up 2)",
+    "description": "A second subsequent measurement of the total amount of cholesterol in the blood.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Follow-up measurement. Used to calculate change from baseline or previous follow-up."
+    ],
+    "clinical_usage": "Provides a longitudinal view of lipid management, assessing long-term adherence, treatment response, and changes in cardiovascular risk.",
+    "node_type": "Input",
+    "relationships": [
+      "HDLc.2",
+      "LDLc.2",
+      "Triglycerides.2",
+      "Cholesterol total",
+      "Cholesterol total.1"
+    ]
+  },
+  "CPK": {
+    "standard_name": "Creatine Phosphokinase",
+    "description": "A blood test measuring the level of Creatine Phosphokinase (CPK), an enzyme found in the heart, brain, and skeletal muscles.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Diagnostic marker for muscle damage (e.g., rhabdomyolysis, myocardial infarction). Not typically a parameter in common formulas."
+    ],
+    "clinical_usage": "Used to detect inflammation or damage to muscles (rhabdomyolysis, myositis) or, less commonly now, the heart (myocardial infarction). Specific isoenzymes (CK-MB) can help pinpoint the source of injury.",
+    "node_type": "Input",
+    "relationships": [
+      "ASAT",
+      "Lean mass",
+      "hsTnT"
+    ]
+  },
+  "Creatinine": {
+    "standard_name": "Serum Creatinine",
+    "description": "A blood test measuring the level of creatinine, a waste product from muscle metabolism, used to assess kidney function.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Parameter in: Glomerular Filtration Rate (GFR) estimation formulas (e.g., CKD-EPI 2021 Equation, MDRD Study Equation, Cockcroft-Gault Formula).",
+      "Conversion: 1 mg/dL = 88.4 \u00b5mol/L",
+      "Conversion: 1 \u00b5mol/L = 0.0113 mg/dL"
+    ],
+    "clinical_usage": "A primary biomarker for assessing kidney function. Elevated levels indicate impaired kidney filtration and are used to calculate the Glomerular Filtration Rate (GFR).",
+    "node_type": "Input",
+    "relationships": [
+      "GFR",
+      "Albumin to creatinine ratio",
+      "Lean mass",
+      "Skeletal muscle index"
+    ]
+  },
+  "Fasting glycemia": {
+    "standard_name": "Fasting Blood Glucose",
+    "description": "Measurement of blood sugar level after an overnight fast.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Parameter in: HOMA-IR (Homeostatic Model Assessment for Insulin Resistance).",
+      "Conversion: 1 mmol/L = 18.018 mg/dL",
+      "Conversion: 1 mg/dL = 0.0555 mmol/L"
+    ],
+    "clinical_usage": "A standard test for screening, diagnosing, and monitoring diabetes mellitus and prediabetes. It reflects the body's ability to manage glucose in the absence of food intake.",
+    "node_type": "Input",
+    "relationships": [
+      "Fasting HbA1c",
+      "Fasting insulinemia"
+    ]
+  },
+  "Fasting HbA1c": {
+    "standard_name": "Glycated Hemoglobin A1c (Fasting)",
+    "description": "Measurement of the average blood glucose levels over the past 2-3 months, taken in a fasting state.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Parameter in: Estimated Average Glucose (eAG) calculation. eAG(mg/dL) = (28.7 \u00d7 HbA1c%) - 46.7.",
+      "Conversion: IFCC (mmol/mol) = [NGSP (%) - 2.15] * 10.929"
+    ],
+    "clinical_usage": "A key diagnostic and monitoring tool for diabetes. It provides a long-term picture of glycemic control, which is crucial for managing diabetes and reducing the risk of long-term complications.",
+    "node_type": "Input",
+    "relationships": [
+      "Fasting glycemia",
+      "Fasting insulinemia"
+    ]
+  },
+  "Fasting insulinemia": {
+    "standard_name": "Fasting Insulin Level",
+    "description": "Measurement of the amount of insulin in the blood after an overnight fast.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Parameter in: HOMA-IR (Homeostatic Model Assessment for Insulin Resistance) = [Fasting Insulin (\u03bcU/mL) \u00d7 Fasting Glucose (mmol/L)] / 22.5.",
+      "Conversion: 1 \u03bcU/mL = 6.945 pmol/L"
+    ],
+    "clinical_usage": "Used to assess insulin resistance, a hallmark of type 2 diabetes and metabolic syndrome. High fasting insulin levels in the presence of normal or high glucose indicate that the body's cells are not responding effectively to insulin.",
+    "node_type": "Input",
+    "relationships": [
+      "Fasting glycemia",
+      "Fasting HbA1c"
+    ]
+  },
+  "GFR": {
+    "standard_name": "Glomerular Filtration Rate",
+    "description": "An estimate of how well the kidneys are filtering waste from the blood, typically calculated from serum creatinine levels.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Result of: CKD-EPI 2021 Equation, MDRD Study Equation, or Cockcroft-Gault Formula, which use Serum Creatinine, Age, Sex, and sometimes Race."
+    ],
+    "clinical_usage": "The best overall index of kidney function. It is used to detect, stage, and monitor chronic kidney disease (CKD) and to adjust dosages of medications that are cleared by the kidneys.",
+    "node_type": "Derived",
+    "relationships": [
+      "Creatinine",
+      "birthdate",
+      "sex"
+    ]
+  },
+  "Haematocrit": {
+    "standard_name": "Hematocrit",
+    "description": "The proportion of red blood cells in the blood, expressed as a percentage.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Parameter in: Calculation of blood volume and red cell mass. Can be used in some oxygen delivery formulas."
+    ],
+    "clinical_usage": "A standard part of a complete blood count (CBC) used to diagnose and monitor anemia (low Hct) or polycythemia (high Hct). It also provides information about hydration status.",
+    "node_type": "Input",
+    "relationships": [
+      "Platelets"
+    ]
+  },
+  "HDLc": {
+    "standard_name": "High-Density Lipoprotein Cholesterol",
+    "description": "Baseline measurement of High-Density Lipoprotein (HDL) cholesterol, often called 'good' cholesterol.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Parameter in: Friedewald Formula (for LDLc), Non-HDL Cholesterol Calculation, Total Cholesterol/HDLc Ratio, Triglycerides/HDLc Ratio, Cardiovascular Risk Scores (ASCVD, Framingham).",
+      "Conversion: 1 mmol/L = 38.67 mg/dL",
+      "Conversion: 1 mg/dL = 0.02586 mmol/L"
+    ],
+    "clinical_usage": "Part of the lipid panel for cardiovascular risk assessment. Higher levels of HDL-C are generally associated with a lower risk of atherosclerotic cardiovascular disease.",
+    "node_type": "Input",
+    "relationships": [
+      "Cholesterol total",
+      "LDLc",
+      "Triglycerides",
+      "HDLc.1",
+      "HDLc.2"
+    ]
+  },
+  "HDLc.1": {
+    "standard_name": "High-Density Lipoprotein Cholesterol (Follow-up 1)",
+    "description": "A subsequent measurement of High-Density Lipoprotein (HDL) cholesterol.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Follow-up measurement. Used to calculate change from baseline."
+    ],
+    "clinical_usage": "Used to monitor changes in HDL-C levels in response to lifestyle interventions (e.g., exercise, diet) or medications.",
+    "node_type": "Input",
+    "relationships": [
+      "Cholesterol total.1",
+      "HDLc",
+      "HDLc.2"
+    ]
+  },
+  "HDLc.2": {
+    "standard_name": "High-Density Lipoprotein Cholesterol (Follow-up 2)",
+    "description": "A second subsequent measurement of High-Density Lipoprotein (HDL) cholesterol.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Follow-up measurement. Used to calculate change from baseline or previous follow-up."
+    ],
+    "clinical_usage": "Provides a longitudinal assessment of HDL-C, contributing to the overall picture of long-term cardiovascular risk management.",
+    "node_type": "Input",
+    "relationships": [
+      "Cholesterol total.2",
+      "HDLc",
+      "HDLc.1"
+    ]
+  },
+  "hsTnT": {
+    "standard_name": "High-Sensitivity Troponin T",
+    "description": "A blood test measuring a highly sensitive assay for Troponin T, a protein specific to heart muscle, used to detect cardiac injury.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Parameter in: Risk stratification scores for Acute Coronary Syndrome (e.g., GRACE score, HEART score) and heart failure prognosis."
+    ],
+    "clinical_usage": "A critical biomarker for the diagnosis of acute myocardial infarction (heart attack). Its high sensitivity allows for earlier detection of myocardial injury. It is also used for risk stratification in various cardiac conditions.",
+    "node_type": "Input",
+    "relationships": [
+      "NT-proBNP",
+      "EFsimpson",
+      "CPK"
+    ]
+  },
+  "LDH": {
+    "standard_name": "Lactate Dehydrogenase",
+    "description": "A blood test measuring the level of Lactate Dehydrogenase, an enzyme involved in energy production that is present in many body tissues.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "General marker of cellular damage. Not typically a parameter in common formulas."
+    ],
+    "clinical_usage": "A non-specific marker of cellular injury. Elevated levels can be seen in a wide range of conditions, including heart attack, liver disease, hemolysis, and certain cancers. Its use for diagnosing MI has been largely replaced by troponins.",
+    "node_type": "Input",
+    "relationships": [
+      "ALAT",
+      "ASAT",
+      "CPK",
+      "hsTnT"
+    ]
+  },
+  "LDLc": {
+    "standard_name": "Low-Density Lipoprotein Cholesterol",
+    "description": "Baseline measurement of Low-Density Lipoprotein (LDL) cholesterol, often called 'bad' cholesterol.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Result of: Friedewald Formula: LDLc = Total Cholesterol - HDLc - (Triglycerides / 5) [mg/dL]. (Note: Invalid if Triglycerides > 400 mg/dL).",
+      "Parameter in: Cardiovascular Risk Scores (ASCVD, Framingham) and treatment goal assessments.",
+      "Conversion: 1 mmol/L = 38.67 mg/dL",
+      "Conversion: 1 mg/dL = 0.02586 mmol/L"
+    ],
+    "clinical_usage": "A primary target for therapy in preventing cardiovascular disease. High levels of LDL-C are a major risk factor for atherosclerosis. It is used to guide and monitor the effectiveness of lipid-lowering drugs like statins.",
+    "node_type": "Input",
+    "relationships": [
+      "Cholesterol total",
+      "HDLc",
+      "Triglycerides",
+      "LDLc.1",
+      "LDLc.2"
+    ]
+  },
+  "LDLc.1": {
+    "standard_name": "Low-Density Lipoprotein Cholesterol (Follow-up 1)",
+    "description": "A subsequent measurement of Low-Density Lipoprotein (LDL) cholesterol.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Follow-up measurement. Used to calculate change from baseline."
+    ],
+    "clinical_usage": "Essential for assessing the patient's response to statin therapy or other lipid-lowering interventions and determining if treatment goals have been met.",
+    "node_type": "Input",
+    "relationships": [
+      "Cholesterol total.1",
+      "LDLc",
+      "LDLc.2"
+    ]
+  },
+  "LDLc.2": {
+    "standard_name": "Low-Density Lipoprotein Cholesterol (Follow-up 2)",
+    "description": "A second subsequent measurement of Low-Density Lipoprotein (LDL) cholesterol.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Follow-up measurement. Used to calculate change from baseline or previous follow-up."
+    ],
+    "clinical_usage": "Used for long-term monitoring of lipid management to ensure sustained control and adherence to therapy.",
+    "node_type": "Input",
+    "relationships": [
+      "Cholesterol total.2",
+      "LDLc",
+      "LDLc.1"
+    ]
+  },
+  "NT-proBNP": {
+    "standard_name": "N-terminal pro-B-type Natriuretic Peptide",
+    "description": "A blood test for NT-proBNP, a hormone precursor released by the heart in response to stress, used as a biomarker for heart failure.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Parameter in: Heart failure diagnostic algorithms and prognostic scores (e.g., MAGGIC Heart Failure Risk Score)."
+    ],
+    "clinical_usage": "A key biomarker for the diagnosis, prognosis, and management of heart failure. Elevated levels strongly suggest the presence of heart failure, and higher levels correlate with more severe disease.",
+    "node_type": "Input",
+    "relationships": [
+      "hsTnT",
+      "EFsimpson",
+      "EA"
+    ]
+  },
+  "Platelets": {
+    "standard_name": "Platelet Count",
+    "description": "The number of platelets (thrombocytes) in a given volume of blood.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Parameter in: FIB-4 Index for Liver Fibrosis, APRI (AST to Platelet Ratio Index)."
+    ],
+    "clinical_usage": "Measured as part of a complete blood count (CBC) to assess bleeding and clotting disorders. Low counts (thrombocytopenia) increase bleeding risk, while high counts (thrombocytosis) can increase clotting risk.",
+    "node_type": "Input",
+    "relationships": [
+      "Haematocrit"
+    ]
+  },
+  "Triglycerides": {
+    "standard_name": "Triglycerides",
+    "description": "Baseline measurement of the level of triglycerides, a type of fat, in the blood.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Parameter in: Friedewald Formula (for LDLc), Triglycerides/HDLc Ratio.",
+      "Conversion: 1 mmol/L = 88.57 mg/dL",
+      "Conversion: 1 mg/dL = 0.01129 mmol/L"
+    ],
+    "clinical_usage": "Part of the lipid panel used to assess cardiovascular risk. High levels (hypertriglyceridemia) are associated with an increased risk of pancreatitis and atherosclerotic cardiovascular disease.",
+    "node_type": "Input",
+    "relationships": [
+      "Cholesterol total",
+      "HDLc",
+      "LDLc",
+      "Triglycerides.1",
+      "Triglycerides.2"
+    ]
+  },
+  "Triglycerides.1": {
+    "standard_name": "Triglycerides (Follow-up 1)",
+    "description": "A subsequent measurement of the level of triglycerides in the blood.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Follow-up measurement. Used to calculate change from baseline."
+    ],
+    "clinical_usage": "Used to monitor the effectiveness of lifestyle changes (diet, exercise) or medications (e.g., fibrates, statins) aimed at lowering triglyceride levels.",
+    "node_type": "Input",
+    "relationships": [
+      "Cholesterol total.1",
+      "Triglycerides",
+      "Triglycerides.2"
+    ]
+  },
+  "Triglycerides.2": {
+    "standard_name": "Triglycerides (Follow-up 2)",
+    "description": "A second subsequent measurement of the level of triglycerides in the blood.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Follow-up measurement. Used to calculate change from baseline or previous follow-up."
+    ],
+    "clinical_usage": "Provides a longitudinal view of triglyceride management and its impact on overall cardiovascular risk.",
+    "node_type": "Input",
+    "relationships": [
+      "Cholesterol total.2",
+      "Triglycerides",
+      "Triglycerides.1"
+    ]
+  },
+  "us-CRP": {
+    "standard_name": "High-Sensitivity C-Reactive Protein (hs-CRP)",
+    "description": "A blood test measuring a low level of C-Reactive Protein to assess for inflammation, often used as a marker for cardiovascular disease risk.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Parameter in: Some cardiovascular risk scores like the Reynolds Risk Score, as a marker of inflammation."
+    ],
+    "clinical_usage": "Used as a biomarker to assess the risk of future cardiovascular events. Persistently elevated hs-CRP levels indicate chronic low-grade inflammation, a key factor in atherosclerosis.",
+    "node_type": "Input",
+    "relationships": [
+      "Fat mass",
+      "Smoking"
+    ]
+  },
+  "Gamma-GT": {
+    "standard_name": "Gamma-Glutamyl Transferase (GGT)",
+    "description": "A blood test measuring the level of Gamma-Glutamyl Transferase, an enzyme found mainly in the liver.",
+    "category": "Laboratory",
+    "related_formulas": [
+      "Diagnostic marker for liver and biliary disease. Not typically a parameter in common formulas."
+    ],
+    "clinical_usage": "A sensitive marker for liver and bile duct disease. It is often elevated in response to alcohol consumption and can be used to monitor alcohol abuse. It is often interpreted alongside other liver function tests like ALP.",
+    "node_type": "Input",
+    "relationships": [
+      "ALAT",
+      "ASAT",
+      "ALP",
+      "Alcohol consumption"
+    ]
+  },
+  "Fat mass": {
+    "standard_name": "Fat Mass",
+    "description": "The total mass of fat in the body, typically measured by body composition analysis.",
+    "category": "Anthropometry",
+    "related_formulas": [
+      "Parameter in: Body Fat Percentage = (Fat Mass / Total Body Mass) * 100."
+    ],
+    "clinical_usage": "Used to assess obesity and metabolic health beyond simple Body Mass Index (BMI). High fat mass is a risk factor for type 2 diabetes, cardiovascular disease, and other metabolic disorders.",
+    "node_type": "Input",
+    "relationships": [
+      "Total mass",
+      "Lean mass"
+    ]
+  },
+  "Lean mass": {
+    "standard_name": "Lean Body Mass",
+    "description": "The mass of the body minus the fat mass (includes muscle, bone, organs, and water).",
+    "category": "Anthropometry",
+    "related_formulas": [
+      "Parameter in: Appendicular Lean Mass (ALM) to BMI ratio, used in sarcopenia diagnosis."
+    ],
+    "clinical_usage": "Used to assess nutritional status, muscle mass, and sarcopenia (age-related muscle loss). Maintaining lean mass is important for metabolic health and physical function.",
+    "node_type": "Input",
+    "relationships": [
+      "Total mass",
+      "Fat mass",
+      "Skeletal muscle index",
+      "Creatinine"
+    ]
+  },
+  "Skeletal muscle index": {
+    "standard_name": "Skeletal Muscle Index",
+    "description": "A measure of muscle mass relative to height, often calculated as appendicular skeletal muscle mass divided by height squared.",
+    "category": "Anthropometry",
+    "related_formulas": [
+      "Result of: Skeletal Muscle Index (SMI) = Skeletal Muscle Mass (kg) / Height (m)^2."
+    ],
+    "clinical_usage": "A key metric for diagnosing sarcopenia. A low skeletal muscle index is associated with frailty, poor physical performance, and increased mortality risk, especially in older adults and chronically ill patients.",
+    "node_type": "Derived",
+    "relationships": [
+      "Lean mass"
+    ]
+  },
+  "Total mass": {
+    "standard_name": "Total Body Mass",
+    "description": "The total weight of the participant.",
+    "category": "Anthropometry",
+    "related_formulas": [
+      "Parameter in: Body Fat Percentage = (Fat Mass / Total Body Mass) * 100. This is equivalent to 'Weight'."
+    ],
+    "clinical_usage": "A fundamental anthropometric measurement used to calculate BMI, dose medications, and track weight changes over time.",
+    "node_type": "Input",
+    "relationships": [
+      "Fat mass",
+      "Lean mass"
+    ]
+  },
+  "A": {
+    "standard_name": "Mitral Inflow A-wave Velocity",
+    "description": "Echocardiographic measurement of the peak velocity of late diastolic blood flow from the left atrium to the left ventricle, corresponding to atrial contraction.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: Mitral Inflow E/A Ratio (EA)."
+    ],
+    "clinical_usage": "Used in the assessment of left ventricular diastolic function. An A-wave that is significantly larger than the E-wave (E/A ratio < 1) suggests impaired ventricular relaxation (Grade 1 diastolic dysfunction).",
+    "node_type": "Input",
+    "relationships": [
+      "E",
+      "EA"
+    ]
+  },
+  "COsimpson": {
+    "standard_name": "Cardiac Output (Simpson's Method)",
+    "description": "Echocardiographic estimation of the volume of blood pumped by the heart per minute, calculated using Simpson's biplane method.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Result of: Cardiac Output (CO) = Stroke Volume (SV) * Heart Rate. Where SV = LVEDV_simpson - LVESV_simpson."
+    ],
+    "clinical_usage": "A fundamental measure of overall cardiac performance. Low cardiac output is a hallmark of heart failure and cardiogenic shock, while high output can be seen in conditions like sepsis or anemia.",
+    "node_type": "Derived",
+    "relationships": [
+      "EFsimpson"
+    ]
+  },
+  "Dt": {
+    "standard_name": "Mitral E-wave Deceleration Time",
+    "description": "Echocardiographic measurement of the time it takes for the peak early diastolic mitral inflow velocity (E-wave) to decelerate to baseline.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: Assessment of left ventricular diastolic function and filling pressures."
+    ],
+    "clinical_usage": "An important parameter for assessing left ventricular diastolic function and filling pressures. A shortened DT (<160 ms) suggests elevated LV filling pressures and restrictive filling (Grade 3 diastolic dysfunction).",
+    "node_type": "Input",
+    "relationships": [
+      "E",
+      "A",
+      "EA"
+    ]
+  },
+  "E": {
+    "standard_name": "Mitral Inflow E-wave Velocity",
+    "description": "Echocardiographic measurement of the peak velocity of early diastolic blood flow from the left atrium to the left ventricle.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: Mitral Inflow E/A Ratio (EA), E/e' Ratio (for LV filling pressure)."
+    ],
+    "clinical_usage": "A key parameter in assessing left ventricular diastolic function. Its velocity is influenced by the rate of LV relaxation and left atrial pressure.",
+    "node_type": "Input",
+    "relationships": [
+      "A",
+      "EA"
+    ]
+  },
+  "EA": {
+    "standard_name": "Mitral Inflow E/A Ratio",
+    "description": "Echocardiographic measurement of the ratio of early (E) to late (A) diastolic mitral inflow velocities, a key marker of diastolic function.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Result of: E/A Ratio = Mitral Inflow E-wave Velocity / Mitral Inflow A-wave Velocity."
+    ],
+    "clinical_usage": "A primary parameter for grading left ventricular diastolic dysfunction. A ratio < 0.8 suggests impaired relaxation, while a ratio > 2 often indicates restrictive filling and high filling pressures.",
+    "node_type": "Derived",
+    "relationships": [
+      "E",
+      "A"
+    ]
+  },
+  "EDPWT": {
+    "standard_name": "End-Diastolic Posterior Wall Thickness",
+    "description": "Echocardiographic measurement of the thickness of the left ventricular posterior wall at the end of diastole.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: Relative Wall Thickness (RWT), Left Ventricular Mass (LVM) calculation (e.g., Devereux formula)."
+    ],
+    "clinical_usage": "Used to assess for left ventricular hypertrophy (LVH), a common finding in hypertension and aortic stenosis. Increased thickness is a marker of chronic pressure overload.",
+    "node_type": "Input",
+    "relationships": [
+      "EDSWT"
+    ]
+  },
+  "EDSWT": {
+    "standard_name": "End-Diastolic Septal Wall Thickness",
+    "description": "Echocardiographic measurement of the thickness of the interventricular septum at the end of diastole.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: Relative Wall Thickness (RWT), Left Ventricular Mass (LVM) calculation (e.g., Devereux formula)."
+    ],
+    "clinical_usage": "Used along with posterior wall thickness to diagnose and quantify left ventricular hypertrophy (LVH). Asymmetric septal hypertrophy is a hallmark of hypertrophic cardiomyopathy.",
+    "node_type": "Input",
+    "relationships": [
+      "EDPWT"
+    ]
+  },
+  "EFsimpson": {
+    "standard_name": "Ejection Fraction (Simpson's Method)",
+    "description": "Echocardiographic estimation of the left ventricular ejection fraction, calculated using Simpson's biplane method.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Result of: Ejection Fraction (EF) = [(LVEDV - LVESV) / LVEDV] * 100."
+    ],
+    "clinical_usage": "The most common and important measure of left ventricular systolic function. It is used to diagnose and classify heart failure (e.g., HFrEF, HFpEF), guide therapy, and determine prognosis.",
+    "node_type": "Derived",
+    "relationships": [
+      "COsimpson",
+      "hsTnT",
+      "NT-proBNP"
+    ]
+  },
+  "LA-LS-conduit": {
+    "standard_name": "Left Atrial Longitudinal Strain (Conduit Phase)",
+    "description": "A measure of left atrial function during early ventricular diastole (conduit phase), assessed via speckle-tracking echocardiography.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: LA Reservoir Strain = LA Conduit Strain + LA Contraction Strain."
+    ],
+    "clinical_usage": "An advanced measure of left atrial function. Impaired conduit function reflects increased left ventricular stiffness and is associated with diastolic dysfunction and heart failure with preserved ejection fraction (HFpEF).",
+    "node_type": "Input",
+    "relationships": [
+      "LA-LS-contract",
+      "LA-LS-res"
+    ]
+  },
+  "LA-LS-contract": {
+    "standard_name": "Left Atrial Longitudinal Strain (Contraction Phase)",
+    "description": "A measure of left atrial function during atrial contraction (booster pump phase), assessed via speckle-tracking echocardiography.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: LA Reservoir Strain = LA Conduit Strain + LA Contraction Strain."
+    ],
+    "clinical_usage": "An advanced measure of left atrial booster pump function. Reduced contraction strain is a marker of atrial myopathy and is associated with atrial fibrillation and stroke risk.",
+    "node_type": "Input",
+    "relationships": [
+      "LA-LS-conduit",
+      "LA-LS-res"
+    ]
+  },
+  "LA-LS-res": {
+    "standard_name": "Left Atrial Longitudinal Strain (Reservoir Phase)",
+    "description": "A measure of left atrial function during ventricular systole (reservoir phase), assessed via speckle-tracking echocardiography.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Result of: LA Reservoir Strain = LA Conduit Strain + LA Contraction Strain."
+    ],
+    "clinical_usage": "A key measure of left atrial compliance and overall function. Impaired reservoir strain is an early and sensitive marker of elevated left ventricular filling pressures and diastolic dysfunction.",
+    "node_type": "Derived",
+    "relationships": [
+      "LA-LS-conduit",
+      "LA-LS-contract"
+    ]
+  },
+  "latE'": {
+    "standard_name": "Lateral Mitral Annular e' Velocity",
+    "description": "Tissue Doppler imaging measurement of the early diastolic velocity of the lateral mitral annulus, a marker of myocardial relaxation.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: Average e' velocity = (septal e' + lateral e') / 2. This is then used to calculate the E/e' ratio."
+    ],
+    "clinical_usage": "A crucial parameter for assessing left ventricular diastolic function. A reduced lateral e' velocity (<10 cm/s) indicates impaired myocardial relaxation. The E/e' ratio (using the average of lateral and septal e') is used to estimate LV filling pressures."
+  },
+  "LAV_ES_al": {
+    "standard_name": "Left Atrial End-Systolic Volume (Area-Length)",
+    "description": "Echocardiographic estimation of the left atrial volume at the end of ventricular systole, calculated using the area-length method.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: Left Atrial Volume Index (LAVI) = Left Atrial Volume / Body Surface Area (BSA)."
+    ],
+    "clinical_usage": "Used to assess left atrial size. Left atrial enlargement is a marker of chronic diastolic dysfunction and elevated filling pressures, and is a strong predictor of adverse cardiovascular events, including atrial fibrillation and stroke."
+  },
+  "LAV_ES_simpson": {
+    "standard_name": "Left Atrial End-Systolic Volume (Simpson's Method)",
+    "description": "Echocardiographic estimation of the left atrial volume at the end of ventricular systole, calculated using Simpson's method.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: Left Atrial Volume Index (LAVI) = Left Atrial Volume / Body Surface Area (BSA)."
+    ],
+    "clinical_usage": "The gold standard for assessing left atrial size. When indexed to body surface area (LAVI), it is a key parameter in the diagnosis and grading of diastolic dysfunction and has significant prognostic value."
+  },
+  "LVEDD": {
+    "standard_name": "Left Ventricular End-Diastolic Diameter",
+    "description": "Echocardiographic measurement of the internal diameter of the left ventricle at the end of diastole.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: Relative Wall Thickness (RWT) = (EDPWT + EDSWT) / LVEDD. Also used in Left Ventricular Mass (LVM) calculations."
+    ],
+    "clinical_usage": "A basic measure of LV size. An increased LVEDD indicates left ventricular dilation, which can be seen in volume overload conditions or dilated cardiomyopathy."
+  },
+  "LVEDV": {
+    "standard_name": "Left Ventricular End-Diastolic Volume",
+    "description": "Echocardiographic measurement of the volume of blood in the left ventricle at the end of diastole.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: Ejection Fraction (EF), Stroke Volume (SV = LVEDV - LVESV)."
+    ],
+    "clinical_usage": "A primary measure of LV size and preload. Increased LVEDV indicates LV dilation. It is a critical component in the calculation of ejection fraction and stroke volume."
+  },
+  "LVESV": {
+    "standard_name": "Left Ventricular End-Systolic Volume",
+    "description": "Echocardiographic measurement of the volume of blood remaining in the left ventricle at the end of systole.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: Ejection Fraction (EF), Stroke Volume (SV = LVEDV - LVESV)."
+    ],
+    "clinical_usage": "A measure of LV systolic performance. An increased LVESV indicates impaired contractility, as the ventricle is unable to eject a normal amount of blood. It is a key component in calculating ejection fraction."
+  },
+  "LVOT": {
+    "standard_name": "Left Ventricular Outflow Tract Diameter",
+    "description": "Echocardiographic measurement of the diameter of the left ventricular outflow tract.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: LVOT Area = \u03c0 * (LVOT Diameter / 2)^2. This is used to calculate Stroke Volume."
+    ],
+    "clinical_usage": "An essential measurement used to calculate the cross-sectional area of the LVOT, which is then used in conjunction with the LVOT VTI to determine stroke volume and cardiac output."
+  },
+  "LVOT VTI": {
+    "standard_name": "Left Ventricular Outflow Tract Velocity Time Integral",
+    "description": "Echocardiographic measurement of the integral of blood flow velocity over time in the LVOT, used to calculate stroke volume.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: Stroke Volume (SV) = LVOT Area * LVOT VTI."
+    ],
+    "clinical_usage": "A key parameter for calculating stroke volume (Stroke Volume = LVOT Area x LVOT VTI) and cardiac output. A low VTI indicates reduced forward flow, as seen in heart failure or shock."
+  },
+  "RV-GLS": {
+    "standard_name": "Right Ventricular Global Longitudinal Strain",
+    "description": "A measure of the deformation (shortening) of the right ventricular myocardium along its long axis, assessed via speckle-tracking echocardiography.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Direct measurement of right ventricular function. Not typically an input/output of another formula."
+    ],
+    "clinical_usage": "A sensitive and quantitative measure of right ventricular systolic function. It is more reproducible and can detect RV dysfunction earlier than traditional measures like TAPSE or FAC. It is important in conditions like pulmonary hypertension and congenital heart disease."
+  },
+  "septE'": {
+    "standard_name": "Septal Mitral Annular e' Velocity",
+    "description": "Tissue Doppler imaging measurement of the early diastolic velocity of the septal mitral annulus, a marker of myocardial relaxation.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: Average e' velocity = (septal e' + lateral e') / 2. This is then used to calculate the E/e' ratio."
+    ],
+    "clinical_usage": "A key parameter for assessing left ventricular diastolic function. A reduced septal e' velocity (<7 cm/s) indicates impaired myocardial relaxation. It is used with the lateral e' to calculate an average e' for the E/e' ratio."
+  },
+  "TR Vmax": {
+    "standard_name": "Tricuspid Regurgitation Maximum Velocity",
+    "description": "Echocardiographic measurement of the peak velocity of the tricuspid regurgitant jet, used to estimate pulmonary artery pressure.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: Estimation of Pulmonary Artery Systolic Pressure (PASP). Simplified Bernoulli Equation: \u0394P = 4 * (TR Vmax)^2. Then, PASP \u2248 \u0394P + Right Atrial Pressure."
+    ],
+    "clinical_usage": "Used to estimate the systolic pressure in the right ventricle and pulmonary artery. Using the simplified Bernoulli equation (4 x Vmax\u00b2), this velocity is converted to a pressure gradient, which, when added to the estimated right atrial pressure, provides the estimated pulmonary artery systolic pressure (PASP)."
+  },
+  "GCS_ap": {
+    "standard_name": "Global Circumferential Strain (Apical)",
+    "description": "A measure of the circumferential deformation of the left ventricle at the apical level, assessed via speckle-tracking echocardiography.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: Global Circumferential Strain (GCS) = Average of apical, mid, and basal GCS values."
+    ],
+    "clinical_usage": "Part of a multi-level assessment of LV systolic function. Changes in apical strain can be indicative of specific pathologies, such as apical sparing in cardiac amyloidosis."
+  },
+  "GCS_bas": {
+    "standard_name": "Global Circumferential Strain (Basal)",
+    "description": "A measure of the circumferential deformation of the left ventricle at the basal level, assessed via speckle-tracking echocardiography.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: Global Circumferential Strain (GCS) = Average of apical, mid, and basal GCS values."
+    ],
+    "clinical_usage": "Part of a multi-level assessment of LV systolic function. Reduced basal strain is often an early sign of myocardial dysfunction."
+  },
+  "GCS_mid": {
+    "standard_name": "Global Circumferential Strain (Mid-ventricular)",
+    "description": "A measure of the circumferential deformation of the left ventricle at the mid-ventricular level, assessed via speckle-tracking echocardiography.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: Global Circumferential Strain (GCS) = Average of apical, mid, and basal GCS values."
+    ],
+    "clinical_usage": "Part of a multi-level assessment of LV systolic function, providing a comprehensive view of the heart's contractile pattern."
+  },
+  "GLS-2CH": {
+    "standard_name": "Global Longitudinal Strain (2-Chamber View)",
+    "description": "A measure of the longitudinal deformation of the left ventricle derived from the apical 2-chamber view, assessed via speckle-tracking echocardiography.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: Global Longitudinal Strain (GLS) = Average of GLS from 2-chamber, 3-chamber, and 4-chamber views."
+    ],
+    "clinical_usage": "A component of the overall LV GLS calculation. It allows for regional assessment of myocardial function, which can help identify the territory of a coronary artery occlusion."
+  },
+  "GLS-3CH": {
+    "standard_name": "Global Longitudinal Strain (3-Chamber View)",
+    "description": "A measure of the longitudinal deformation of the left ventricle derived from the apical 3-chamber view, assessed via speckle-tracking echocardiography.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: Global Longitudinal Strain (GLS) = Average of GLS from 2-chamber, 3-chamber, and 4-chamber views."
+    ],
+    "clinical_usage": "A component of the overall LV GLS calculation, contributing to a comprehensive and robust assessment of left ventricular systolic function."
+  },
+  "GLS-4CH": {
+    "standard_name": "Global Longitudinal Strain (4-Chamber View)",
+    "description": "A measure of the longitudinal deformation of the left ventricle derived from the apical 4-chamber view, assessed via speckle-tracking echocardiography.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Parameter in: Global Longitudinal Strain (GLS) = Average of GLS from 2-chamber, 3-chamber, and 4-chamber views."
+    ],
+    "clinical_usage": "A component of the overall LV GLS calculation. This view is often one of the most robust for strain analysis."
+  },
+  "COVID19 results": {
+    "standard_name": "COVID-19 Test Result",
+    "description": "The result of a test for SARS-CoV-2 infection.",
+    "category": "Medical History & Comorbidities",
+    "related_formulas": [
+      "Categorical variable used for stratification or as a covariate in statistical models."
+    ],
+    "clinical_usage": "Used to diagnose active or past COVID-19 infection. This information is clinically relevant due to the known cardiovascular complications associated with the virus, such as myocarditis, thrombosis, and arrhythmias."
+  },
+  "Basal Insulin": {
+    "standard_name": "Basal Insulin Use",
+    "description": "Indicates whether the participant is using a long-acting (basal) insulin.",
+    "category": "Medications",
+    "related_formulas": [
+      "Categorical variable (Yes/No) used as a parameter in risk models or to define patient populations."
+    ],
+    "clinical_usage": "A key component of many insulin regimens for type 1 and advanced type 2 diabetes. It helps control blood glucose levels between meals and overnight."
+  },
+  "Type 2 diabetes diagnosis - Year": {
+    "standard_name": "Year of Type 2 Diabetes Diagnosis",
+    "description": "The calendar year in which the participant was diagnosed with Type 2 Diabetes.",
+    "category": "Medical History & Comorbidities",
+    "related_formulas": [
+      "Parameter in: Calculation of Diabetes Duration = Current Year - Year of Diagnosis."
+    ],
+    "clinical_usage": "Used to determine the duration of diabetes, which is a critical factor in assessing the risk of long-term microvascular (retinopathy, nephropathy, neuropathy) and macrovascular (heart disease, stroke) complications."
+  },
+  "Sleep Apnea Syndrome - History": {
+    "standard_name": "History of Sleep Apnea",
+    "description": "Indicates whether the participant has a history of Sleep Apnea Syndrome.",
+    "category": "Medical History & Comorbidities",
+    "related_formulas": [
+      "Categorical variable (Yes/No) used as a parameter in cardiovascular risk assessment."
+    ],
+    "clinical_usage": "Identifies a significant comorbidity that is strongly associated with hypertension, atrial fibrillation, heart failure, and insulin resistance. Its presence influences cardiovascular risk and management."
+  },
+  "Calcium Channel Blockers": {
+    "standard_name": "Calcium Channel Blocker Use",
+    "description": "Indicates whether the participant is taking medication from the Calcium Channel Blocker class.",
+    "category": "Medications",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating treatment status, used as a parameter in risk models (e.g., ASCVD score)."
+    ],
+    "clinical_usage": "These medications are primarily used to treat hypertension and angina. They work by relaxing blood vessels and, in some cases, reducing heart rate and contractility."
+  },
+  "Dyspnea (NYHA)": {
+    "standard_name": "Dyspnea (NYHA Classification)",
+    "description": "Classification of the severity of dyspnea (shortness of breath) according to the New York Heart Association (NYHA) functional classes.",
+    "category": "Symptoms & Clinical Findings",
+    "related_formulas": [
+      "Clinical classification (Class I-IV) for heart failure severity. Not a formula parameter, but a clinical score itself."
+    ],
+    "clinical_usage": "A standardized method to quantify the severity of symptoms and functional limitations in patients with heart failure. It is essential for staging disease, guiding therapy, and assessing prognosis."
+  },
+  "Metformin (biguanides)": {
+    "standard_name": "Metformin/Biguanide Use",
+    "description": "Indicates whether the participant is taking Metformin or other drugs from the biguanide class.",
+    "category": "Medications",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating treatment status, used as a parameter in risk models."
+    ],
+    "clinical_usage": "Metformin lowers blood glucose primarily by decreasing hepatic glucose production and increasing insulin sensitivity. It is a cornerstone of type 2 diabetes management."
+  },
+  "Beta-blockers": {
+    "standard_name": "Beta-blocker Use",
+    "description": "Indicates whether the participant is taking medication from the Beta-blocker class.",
+    "category": "Medications",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating treatment status, used as a parameter in risk models."
+    ],
+    "clinical_usage": "Used to treat a variety of cardiovascular conditions, including hypertension, angina, arrhythmias, and, most importantly, as a cornerstone of therapy for heart failure with reduced ejection fraction (HFrEF) to improve survival."
+  },
+  "Sulfonamides": {
+    "standard_name": "Sulfonylurea Use",
+    "description": "Indicates whether the participant is taking medication from the Sulfonylurea class (a type of antidiabetic drug).",
+    "category": "Medications",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating treatment status, used as a parameter in risk models."
+    ],
+    "clinical_usage": "These are oral antidiabetic agents that stimulate the pancreas to release more insulin. They are used to lower blood glucose in type 2 diabetes."
+  },
+  "Diastolic blood pressure": {
+    "standard_name": "Diastolic Blood Pressure",
+    "description": "The pressure in the arteries when the heart rests between beats.",
+    "category": "Vital Signs",
+    "related_formulas": [
+      "Parameter in: Mean Arterial Pressure (MAP) \u2248 DBP + 1/3(SBP - DBP), Pulse Pressure (PP = SBP - DBP), and Cardiovascular Risk Scores (ASCVD, Framingham)."
+    ],
+    "clinical_usage": "A vital sign used to diagnose and monitor hypertension. Controlling diastolic blood pressure is important for reducing the risk of stroke, heart disease, and kidney disease."
+  },
+  "Weight": {
+    "standard_name": "Body Weight",
+    "description": "The measured body weight of the participant.",
+    "category": "Anthropometry",
+    "related_formulas": [
+      "Parameter in: Body Mass Index (BMI) = Weight (kg) / [Height (m)]^2, Body Surface Area (BSA) formulas (e.g., Mosteller)."
+    ],
+    "clinical_usage": "A fundamental measurement for calculating BMI, dosing medications, and monitoring for fluid retention (a key sign of worsening heart failure) or weight loss."
+  },
+  "GLP-1 Receptor Agonists": {
+    "standard_name": "GLP-1 Receptor Agonist Use",
+    "description": "Indicates whether the participant is taking medication from the GLP-1 Receptor Agonist class.",
+    "category": "Medications",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating treatment status, used as a parameter in risk models."
+    ],
+    "clinical_usage": "Used to treat type 2 diabetes. These agents lower blood glucose, promote weight loss, and have demonstrated significant cardiovascular benefits, reducing the risk of major adverse cardiac events."
+  },
+  "Fibrates": {
+    "standard_name": "Fibrate Use",
+    "description": "Indicates whether the participant is taking medication from the Fibrate class for managing cholesterol.",
+    "category": "Medications",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating treatment status, used as a parameter in risk models."
+    ],
+    "clinical_usage": "Used primarily to lower high triglyceride levels and, to a lesser extent, raise HDL cholesterol. Their role in cardiovascular risk reduction is debated, especially in patients already on statins."
+  },
+  "Loop Diuretics": {
+    "standard_name": "Loop Diuretic Use",
+    "description": "Indicates whether the participant is taking medication from the Loop Diuretic class.",
+    "category": "Medications",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating treatment status, used as a parameter in risk models."
+    ],
+    "clinical_usage": "Primarily used to treat fluid overload (edema) in conditions like heart failure, liver cirrhosis, and kidney disease. They are essential for symptom relief in decompensated heart failure."
+  },
+  "Potassium Sparing Diuretics": {
+    "standard_name": "Potassium-Sparing Diuretic Use",
+    "description": "Indicates whether the participant is taking medication from the Potassium-Sparing Diuretic class.",
+    "category": "Medications",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating treatment status, used as a parameter in risk models."
+    ],
+    "clinical_usage": "Used to treat hypertension and fluid retention, often in combination with other diuretics to prevent hypokalemia. Spironolactone and eplerenone are also aldosterone antagonists with specific benefits in heart failure."
+  },
+  "Diabetic feet - History": {
+    "standard_name": "History of Diabetic Foot Complications",
+    "description": "Indicates whether the participant has a history of diabetic foot problems, such as ulcers or neuropathy.",
+    "category": "Medical History & Comorbidities",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating a diabetes complication, used in risk stratification."
+    ],
+    "clinical_usage": "Identifies patients at high risk for lower extremity complications. It is a marker of advanced diabetes and peripheral neuropathy and/or peripheral artery disease."
+  },
+  "Ankle swelling": {
+    "standard_name": "Ankle Swelling (Edema)",
+    "description": "Presence of swelling in the ankles, also known as peripheral edema.",
+    "category": "Symptoms & Clinical Findings",
+    "related_formulas": [
+      "Clinical sign (Yes/No) used in heart failure diagnosis and scoring systems."
+    ],
+    "clinical_usage": "A common clinical sign that can indicate a variety of conditions. In a cardiac context, bilateral pitting edema is a classic sign of fluid overload due to congestive heart failure."
+  },
+  "Other origin": {
+    "standard_name": "Other Geographic/Ethnic Origin",
+    "description": "A category for participants whose geographic or ethnic origin is not otherwise specified.",
+    "category": "Demographics",
+    "related_formulas": [
+      "Categorical variable for ethnicity/race, used as a parameter in some risk scores (e.g., ASCVD) and GFR calculations."
+    ],
+    "clinical_usage": "Allows for the collection of more granular demographic data, which can be important for epidemiological studies and understanding health disparities."
+  },
+  "Microalbuminuria": {
+    "standard_name": "Microalbuminuria Status",
+    "description": "Presence of small amounts of albumin in the urine, an early sign of kidney disease.",
+    "category": "Medical History & Comorbidities",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating a stage of kidney disease, often defined by the Albumin-to-Creatinine Ratio."
+    ],
+    "clinical_usage": "An early sign of diabetic nephropathy and a marker of generalized endothelial dysfunction. Its presence is associated with an increased risk of both progressive kidney disease and cardiovascular events."
+  },
+  "DPP-4 Inhibitors": {
+    "standard_name": "DPP-4 Inhibitor Use",
+    "description": "Indicates whether the participant is taking medication from the Dipeptidyl Peptidase-4 (DPP-4) Inhibitor class.",
+    "category": "Medications",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating treatment status, used as a parameter in risk models."
+    ],
+    "clinical_usage": "Used to treat type 2 diabetes by increasing the levels of incretin hormones, which helps to lower blood glucose. They are generally well-tolerated and weight-neutral."
+  },
+  "Hip": {
+    "standard_name": "Hip Circumference",
+    "description": "The measurement of the circumference of the hips at their widest point.",
+    "category": "Anthropometry",
+    "related_formulas": [
+      "Parameter in: Waist-to-Hip Ratio (WHR) = Waist Circumference / Hip Circumference."
+    ],
+    "clinical_usage": "Used in conjunction with waist circumference to calculate the waist-to-hip ratio, an indicator of central adiposity and metabolic risk."
+  },
+  "LV_peak_systolic_rad_strain": {
+    "standard_name": "Left Ventricular Peak Systolic Radial Strain",
+    "description": "A measure of the peak radial deformation (thickening) of the left ventricular myocardium during systole.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Direct measurement of left ventricular function. Not typically an input/output of another formula."
+    ],
+    "clinical_usage": "An advanced measure of systolic function. While longitudinal strain measures shortening, radial strain measures thickening. It provides complementary information about myocardial contractility."
+  },
+  "Statins": {
+    "standard_name": "Statin Use",
+    "description": "Indicates whether the participant is taking medication from the Statin class for lowering cholesterol.",
+    "category": "Medications",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating treatment status, used as a parameter in risk models."
+    ],
+    "clinical_usage": "The cornerstone of therapy for lowering LDL ('bad') cholesterol to reduce the risk of primary and secondary cardiovascular events like heart attacks and strokes."
+  },
+  "SGLT-2 Inhibitors": {
+    "standard_name": "SGLT-2 Inhibitor Use",
+    "description": "Indicates whether the participant is taking medication from the Sodium-Glucose Cotransporter-2 (SGLT-2) Inhibitor class.",
+    "category": "Medications",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating treatment status, used as a parameter in risk models."
+    ],
+    "clinical_usage": "Used to treat type 2 diabetes. This class has been shown to have profound benefits beyond glucose lowering, including significant reductions in heart failure hospitalizations, cardiovascular death, and progression of chronic kidney disease."
+  },
+  "Paroxysmal nocturnal dyspnea": {
+    "standard_name": "Paroxysmal Nocturnal Dyspnea",
+    "description": "Presence of attacks of severe shortness of breath and coughing that generally occur at night.",
+    "category": "Symptoms & Clinical Findings",
+    "related_formulas": [
+      "Clinical symptom (Yes/No) used in heart failure diagnosis and scoring systems."
+    ],
+    "clinical_usage": "A highly specific symptom of congestive heart failure. It is caused by the reabsorption of fluid from the lower extremities back into the circulation when lying down, which overwhelms the failing heart."
+  },
+  "LV_peak_systolic_circ_strain": {
+    "standard_name": "Left Ventricular Peak Systolic Circumferential Strain",
+    "description": "A measure of the peak circumferential deformation (shortening) of the left ventricular myocardium during systole.",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Result of: Global Circumferential Strain (GCS) is often calculated as the average of the strain values from basal, mid, and apical segments."
+    ],
+    "clinical_usage": "An advanced, quantitative measure of LV systolic function. It is a sensitive marker of myocardial dysfunction and can be impaired even when ejection fraction is normal."
+  },
+  "Orthopnea": {
+    "standard_name": "Orthopnea",
+    "description": "Presence of shortness of breath that occurs when lying flat, causing the person to have to sleep propped up.",
+    "category": "Symptoms & Clinical Findings",
+    "related_formulas": [
+      "Clinical symptom (Yes/No) used in heart failure diagnosis and scoring systems."
+    ],
+    "clinical_usage": "A classic symptom of congestive heart failure, caused by the redistribution of fluid to the central circulation when supine, which increases pulmonary congestion."
+  },
+  "CARDIATEAM group": {
+    "standard_name": "Study Group Assignment",
+    "description": "The specific group or cohort to which the participant was assigned within the CARDIATEAM study.",
+    "category": "Administrative",
+    "related_formulas": [
+      "Identifier: Not used in medical formulas. Represents study group assignment."
+    ],
+    "clinical_usage": "Used for statistical analysis to compare the effects of an intervention (e.g., a new drug or therapy) against a control or placebo group."
+  },
+  "Glitazones": {
+    "standard_name": "Glitazone (Thiazolidinedione) Use",
+    "description": "Indicates whether the participant is taking medication from the Glitazone (Thiazolidinedione) class.",
+    "category": "Medications",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating treatment status, used as a parameter in risk models."
+    ],
+    "clinical_usage": "Oral antidiabetic agents that improve insulin sensitivity. Their use has declined due to concerns about side effects, including fluid retention, which can worsen or precipitate heart failure."
+  },
+  "Reduced exercise tolerance": {
+    "standard_name": "Reduced Exercise Tolerance",
+    "description": "A noticeable decrease in the ability to perform physical activity.",
+    "category": "Symptoms & Clinical Findings",
+    "related_formulas": [
+      "Clinical symptom (Yes/No) used in heart failure diagnosis and functional classification (e.g., NYHA)."
+    ],
+    "clinical_usage": "A cardinal and often early symptom of heart failure and other cardiopulmonary diseases. It reflects the heart's inability to increase cardiac output sufficiently to meet the metabolic demands of exercise."
+  },
+  "Systolic blood pressure": {
+    "standard_name": "Systolic Blood Pressure",
+    "description": "The pressure in the arteries during the contraction of the heart muscle.",
+    "category": "Vital Signs",
+    "related_formulas": [
+      "Parameter in: Mean Arterial Pressure (MAP), Pulse Pressure (PP), and Cardiovascular Risk Scores (ASCVD, Framingham)."
+    ],
+    "clinical_usage": "A vital sign used to diagnose and monitor hypertension. Elevated systolic blood pressure is a major risk factor for cardiovascular disease, particularly in older adults."
+  },
+  "Retinopathy": {
+    "standard_name": "Diabetic Retinopathy Status",
+    "description": "Presence or history of retinopathy, a complication of diabetes that affects the eyes.",
+    "category": "Medical History & Comorbidities",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating a diabetes complication, used in risk stratification."
+    ],
+    "clinical_usage": "A marker of microvascular damage from chronic hyperglycemia. Its presence suggests an increased risk for other microvascular complications like nephropathy and neuropathy."
+  },
+  "Thiazides": {
+    "standard_name": "Thiazide Diuretic Use",
+    "description": "Indicates whether the participant is taking medication from the Thiazide Diuretic class.",
+    "category": "Medications",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating treatment status, used as a parameter in risk models."
+    ],
+    "clinical_usage": "A first-line class of medications for the treatment of hypertension. They work by inhibiting sodium reabsorption in the distal convoluted tubules of the kidneys."
+  },
+  "Type 2 diabetes": {
+    "standard_name": "Type 2 Diabetes Status",
+    "description": "Indicates whether the participant has a diagnosis of Type 2 Diabetes.",
+    "category": "Medical History & Comorbidities",
+    "related_formulas": [
+      "Categorical variable (Yes/No) used as a key parameter in many risk scores (e.g., ASCVD, Framingham)."
+    ],
+    "clinical_usage": "A fundamental diagnosis that dictates a wide range of clinical management strategies, including lifestyle modification, oral medications, insulin therapy, and regular screening for complications."
+  },
+  "Geographic\u00a0origin": {
+    "standard_name": "Geographic Origin",
+    "description": "The geographic region of origin or ancestry of the participant.",
+    "category": "Demographics"
+  },
+  "Waist": {
+    "standard_name": "Waist Circumference",
+    "description": "The measurement of the circumference of the waist.",
+    "category": "Anthropometry",
+    "related_formulas": [
+      "Parameter in: Waist-to-Hip Ratio (WHR) = Waist Circumference / Hip Circumference."
+    ],
+    "clinical_usage": "A key anthropometric measure of central (abdominal) obesity. An increased waist circumference is a strong predictor of metabolic syndrome, insulin resistance, and cardiovascular disease, independent of BMI."
+  },
+  "Alpha-glucosidase Inhibitors": {
+    "standard_name": "Alpha-glucosidase Inhibitor Use",
+    "description": "Indicates whether the participant is taking medication from the Alpha-glucosidase Inhibitor class.",
+    "category": "Medications",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating treatment status, used as a parameter in risk models."
+    ],
+    "clinical_usage": "Used to treat type 2 diabetes by slowing the digestion and absorption of carbohydrates in the small intestine, thereby reducing post-meal blood glucose spikes. They are less commonly used now."
+  },
+  "B0 VISIT DATE": {
+    "standard_name": "Baseline Visit Date",
+    "description": "The date of the participant's initial or baseline (B0) study visit.",
+    "category": "Administrative",
+    "related_formulas": [
+      "Parameter in: Calculating time-to-event, duration of follow-up, or age at visit."
+    ],
+    "clinical_usage": "Serves as the primary time point (time zero) for a longitudinal study, against which all subsequent follow-up data are referenced."
+  },
+  "ACEIs/ARBs": {
+    "standard_name": "ACE Inhibitor or ARB Use",
+    "description": "Indicates whether the participant is taking an Angiotensin-Converting Enzyme Inhibitor (ACEI) or an Angiotensin II Receptor Blocker (ARB).",
+    "category": "Medications",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating treatment status, used as a parameter in risk models."
+    ],
+    "clinical_usage": "Cornerstone medications for treating hypertension, heart failure with reduced ejection fraction (HFrEF), and chronic kidney disease (especially in diabetes) by blocking the renin-angiotensin-aldosterone system."
+  },
+  "Angina pectoris": {
+    "standard_name": "Angina Pectoris",
+    "description": "Presence or history of angina pectoris (chest pain due to reduced blood flow to the heart).",
+    "category": "Symptoms & Clinical Findings",
+    "related_formulas": [
+      "Clinical symptom (Yes/No) used in cardiovascular risk assessment and scoring (e.g., Diamond-Forrester)."
+    ],
+    "clinical_usage": "A key symptom of coronary artery disease. Its presence, character, and triggers are important for diagnosis, risk stratification, and guiding treatment."
+  },
+  "Aldosterone Receptor Antagonists": {
+    "standard_name": "Aldosterone Receptor Antagonist Use",
+    "description": "Indicates whether the participant is taking medication from the Aldosterone Receptor Antagonist class (e.g., Spironolactone).",
+    "category": "Medications",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating treatment status, used as a parameter in risk models."
+    ],
+    "clinical_usage": "A specific class of potassium-sparing diuretics that are a key component of guideline-directed medical therapy for HFrEF, as they have been shown to improve survival. Also used for resistant hypertension."
+  },
+  "COPD": {
+    "standard_name": "Chronic Obstructive Pulmonary Disease",
+    "description": "Presence or history of a diagnosis of Chronic Obstructive Pulmonary Disease (COPD).",
+    "category": "Medical History & Comorbidities",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating a comorbidity, used as a parameter in risk models."
+    ],
+    "clinical_usage": "Identifies a major comorbidity that often coexists with cardiovascular disease. Symptoms like dyspnea can overlap with heart failure, and certain cardiac medications (e.g., non-selective beta-blockers) may need to be used with caution."
+  },
+  "Diabetic neuropathy": {
+    "standard_name": "Diabetic Neuropathy Status",
+    "description": "Presence or history of nerve damage caused by diabetes.",
+    "category": "Medical History & Comorbidities",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating a diabetes complication, used in risk stratification."
+    ],
+    "clinical_usage": "A common and debilitating microvascular complication of diabetes. It is a major cause of foot ulcers and can also manifest as autonomic neuropathy, affecting heart rate, blood pressure, and digestion."
+  },
+  "Palpitations": {
+    "standard_name": "Palpitations",
+    "description": "Presence of the sensation of a fast-beating, fluttering, or pounding heart.",
+    "category": "Symptoms & Clinical Findings",
+    "related_formulas": [
+      "Clinical symptom (Yes/No) used in arrhythmia risk assessment."
+    ],
+    "clinical_usage": "A common symptom that can be benign or indicate an underlying cardiac arrhythmia, such as atrial fibrillation, supraventricular tachycardia, or ventricular tachycardia. It often prompts further investigation with an ECG or Holter monitor."
+  },
+  "Height": {
+    "standard_name": "Body Height",
+    "description": "The measured height of the participant.",
+    "category": "Anthropometry",
+    "related_formulas": [
+      "Parameter in: Body Mass Index (BMI) = Weight (kg) / [Height (m)]^2, Body Surface Area (BSA) formulas, Skeletal Muscle Index (SMI)."
+    ],
+    "clinical_usage": "A fundamental anthropometric measurement used to calculate Body Mass Index (BMI) and to index various physiological and imaging parameters (e.g., cardiac index, skeletal muscle index) to body size."
+  },
+  "Insulin Pump": {
+    "standard_name": "Insulin Pump Use",
+    "description": "Indicates whether the participant uses an insulin pump for diabetes management.",
+    "category": "Medications",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating treatment modality."
+    ],
+    "clinical_usage": "An advanced method of insulin delivery used by some patients with type 1 or type 2 diabetes to achieve tighter glycemic control. It indicates a more intensive diabetes management regimen."
+  },
+  "LV_peak_systolic_long_strain": {
+    "standard_name": "Left Ventricular Peak Systolic Longitudinal Strain",
+    "description": "A measure of the peak longitudinal deformation (shortening) of the left ventricular myocardium during systole. Often referred to as Global Longitudinal Strain (GLS).",
+    "category": "Echocardiography",
+    "related_formulas": [
+      "Result of: Global Longitudinal Strain (GLS) is often calculated as the average of the strain values from the three standard apical views (GLS-2CH, GLS-3CH, GLS-4CH)."
+    ],
+    "clinical_usage": "A highly sensitive and prognostic measure of LV systolic function. It can detect subtle myocardial dysfunction before a decline in ejection fraction is apparent, making it valuable in cardio-oncology, valvular heart disease, and diabetic cardiomyopathy."
+  },
+  "Glinides": {
+    "standard_name": "Glinide Use",
+    "description": "Indicates whether the participant is taking medication from the Glinide class.",
+    "category": "Medications",
+    "related_formulas": [
+      "Categorical variable (Yes/No) indicating treatment status, used as a parameter in risk models."
+    ],
+    "clinical_usage": "Short-acting oral antidiabetic agents that stimulate the pancreas to release insulin. They are taken before meals to control postprandial blood glucose."
+  },
+  "Heart rate": {
+    "standard_name": "Heart Rate",
+    "description": "The number of heartbeats per minute.",
+    "category": "Vital Signs",
+    "related_formulas": [
+      "Parameter in: Cardiac Output (CO) = Stroke Volume (SV) * Heart Rate."
+    ],
+    "clinical_usage": "A fundamental vital sign. An abnormally high (tachycardia) or low (bradycardia) heart rate can indicate a variety of medical conditions. In heart failure, a lower resting heart rate is often a therapeutic goal."
+  }
+}

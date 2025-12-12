@@ -1,0 +1,37 @@
+{
+    "session_id": "session_20251204_180204_data_1_gauche.xlsx",
+    "source_dataset": "data\\traces\\artifacts\\session_20251204_180204_data_1_gauche.xlsx\\source.xlsx",
+    "steps": [
+        {
+            "timestamp": "2025-12-04T18:02:04.252901",
+            "function": "initial_load",
+            "params": {
+                "filename": "data_1_gauche.xlsx",
+                "source_path": "data\\traces\\artifacts\\session_20251204_180204_data_1_gauche.xlsx\\source.xlsx"
+            },
+            "description": "Uploaded initial dataset: data_1_gauche.xlsx",
+            "output_dataset_path": null,
+            "stats_cat_path": null,
+            "stats_num_path": null,
+            "corr_matrix_path": null
+        },
+        {
+            "timestamp": "2025-12-04T18:02:50.700090",
+            "function": "enrichment",
+            "params": {
+                "enrichment_file_path": "data\\traces\\artifacts\\session_20251204_180204_data_1_gauche.xlsx\\data_2_droite.csv",
+                "strategy": "left",
+                "conflict_resolution": "replace",
+                "identifier": [
+                    "subject_id"
+                ],
+                "add_choice": "Columns"
+            },
+            "description": "Enriched with external data",
+            "output_dataset_path": "data/traces/snapshots\\20251204_180250_enrichment.parquet",
+            "stats_cat_path": null,
+            "stats_num_path": null,
+            "corr_matrix_path": null
+        }
+    ]
+}

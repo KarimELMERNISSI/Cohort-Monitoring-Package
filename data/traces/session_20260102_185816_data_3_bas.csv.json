@@ -1,0 +1,19 @@
+{
+    "session_id": "session_20260102_185816_data_3_bas.csv",
+    "source_dataset": "data\\traces\\artifacts\\session_20260102_185816_data_3_bas.csv\\source.csv",
+    "steps": [
+        {
+            "timestamp": "2026-01-02T18:58:16.837229",
+            "function": "initial_load",
+            "params": {
+                "filename": "data_3_bas.csv",
+                "source_path": "data\\traces\\artifacts\\session_20260102_185816_data_3_bas.csv\\source.csv"
+            },
+            "description": "Uploaded initial dataset: data_3_bas.csv",
+            "output_dataset_path": null,
+            "stats_cat_path": null,
+            "stats_num_path": null,
+            "corr_matrix_path": null
+        }
+    ]
+}

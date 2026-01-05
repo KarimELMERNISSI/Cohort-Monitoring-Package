@@ -1,0 +1,179 @@
+{
+    "session_id": "session_20260105_183044_data_1_gauche.xlsx",
+    "source_dataset": "data\\traces\\artifacts\\session_20260105_183044_data_1_gauche.xlsx\\source.xlsx",
+    "steps": [
+        {
+            "timestamp": "2026-01-05T18:30:44.374454",
+            "function": "initial_load",
+            "params": {
+                "filename": "data_1_gauche.xlsx",
+                "source_path": "data\\traces\\artifacts\\session_20260105_183044_data_1_gauche.xlsx\\source.xlsx"
+            },
+            "description": "Uploaded initial dataset: data_1_gauche.xlsx",
+            "output_dataset_path": null,
+            "stats_cat_path": null,
+            "stats_num_path": null,
+            "corr_matrix_path": null
+        },
+        {
+            "timestamp": "2026-01-05T18:31:07.838874",
+            "function": "enrichment",
+            "params": {
+                "enrichment_file_path": "data\\traces\\artifacts\\session_20260105_183044_data_1_gauche.xlsx\\data_2_droite.csv",
+                "strategy": "left",
+                "conflict_resolution": "replace",
+                "identifier": [
+                    "subject_id"
+                ],
+                "add_choice": "Columns"
+            },
+            "description": "Enriched with external data",
+            "output_dataset_path": "data/traces/snapshots\\20260105_183107_enrichment.parquet",
+            "stats_cat_path": null,
+            "stats_num_path": null,
+            "corr_matrix_path": null
+        },
+        {
+            "timestamp": "2026-01-05T18:31:40.058884",
+            "function": "enrichment",
+            "params": {
+                "enrichment_file_path": "data\\traces\\artifacts\\session_20260105_183044_data_1_gauche.xlsx\\data_3_bas.csv",
+                "strategy": "left",
+                "conflict_resolution": "replace",
+                "identifier": [
+                    "subject_id"
+                ],
+                "add_choice": "Columns"
+            },
+            "description": "Enriched with external data",
+            "output_dataset_path": "data/traces/snapshots\\20260105_183140_enrichment.parquet",
+            "stats_cat_path": null,
+            "stats_num_path": null,
+            "corr_matrix_path": null
+        },
+        {
+            "timestamp": "2026-01-05T18:32:11.082802",
+            "function": "enrichment",
+            "params": {
+                "enrichment_file_path": "data\\traces\\artifacts\\session_20260105_183044_data_1_gauche.xlsx\\data_3_bas.csv",
+                "strategy": "rows",
+                "conflict_resolution": "replace",
+                "identifier": [
+                    "subject_id"
+                ],
+                "add_choice": "Rows"
+            },
+            "description": "Enriched with external data",
+            "output_dataset_path": null,
+            "stats_cat_path": null,
+            "stats_num_path": null,
+            "corr_matrix_path": null
+        },
+        {
+            "timestamp": "2026-01-05T18:33:49.046276",
+            "function": "imputation",
+            "params": {
+                "numerical_imputation_method": "MICE",
+                "categorical_imputation_method": "MissForest",
+                "cat_encoder": false,
+                "num_scaler": false,
+                "remainder_columns": "auto",
+                "remainder_strategy": "passthrough",
+                "remainder_threshold": 0.3
+            },
+            "description": "Applied data imputation",
+            "output_dataset_path": null,
+            "stats_cat_path": null,
+            "stats_num_path": null,
+            "corr_matrix_path": null
+        },
+        {
+            "timestamp": "2026-01-05T18:47:29.581912",
+            "function": "variable_transformation",
+            "params": {
+                "transformation_type": "Dimensionality Reduction",
+                "transformation": "FAMD",
+                "columns": [
+                    "A",
+                    "ALAT",
+                    "ALP",
+                    "ASAT",
+                    "CPK",
+                    "Cholesterol total",
+                    "Creatinine",
+                    "Diastolic blood pressure",
+                    "Dt",
+                    "E",
+                    "EA",
+                    "EDPWT",
+                    "EDSWT",
+                    "EFsimpson",
+                    "Fasting HbA1c",
+                    "Fasting glycemia",
+                    "Fasting insulinemia",
+                    "Fat mass",
+                    "Gamma-GT",
+                    "Skeletal muscle index",
+                    "Lean mass",
+                    "Weight",
+                    "Waist",
+                    "GLP-1 Receptor Agonists",
+                    "sex",
+                    "Smoking",
+                    "Alcohol consumption"
+                ],
+                "naming_pattern": "Name_{method_applied}_Component",
+                "n_components": 14
+            },
+            "description": "Applied FAMD",
+            "output_dataset_path": null,
+            "stats_cat_path": null,
+            "stats_num_path": null,
+            "corr_matrix_path": null
+        },
+        {
+            "timestamp": "2026-01-05T18:55:34.289458",
+            "function": "variable_transformation",
+            "params": {
+                "transformation_type": "Clustering",
+                "transformation": "K-Means",
+                "columns": [
+                    "Name_FAMD_Component_1",
+                    "Name_FAMD_Component_2",
+                    "Name_FAMD_Component_3",
+                    "Name_FAMD_Component_4",
+                    "Name_FAMD_Component_5",
+                    "Name_FAMD_Component_6",
+                    "Name_FAMD_Component_7",
+                    "Name_FAMD_Component_8",
+                    "Name_FAMD_Component_9",
+                    "Name_FAMD_Component_10",
+                    "Name_FAMD_Component_11",
+                    "Name_FAMD_Component_12",
+                    "Name_FAMD_Component_13",
+                    "Name_FAMD_Component_14"
+                ],
+                "naming_pattern": "Cluster_{method_applied}",
+                "n_clusters": 3
+            },
+            "description": "Applied K-Means",
+            "output_dataset_path": null,
+            "stats_cat_path": null,
+            "stats_num_path": null,
+            "corr_matrix_path": null
+        },
+        {
+            "timestamp": "2026-01-05T18:58:18.684275",
+            "function": "variable_computation",
+            "params": {
+                "variable_name": "cardiac_index_from_body_surface_area",
+                "formula": "COsimpson / ( np.sqrt( ( Weight * Height ) / 3600 ) )"
+            },
+            "description": "Computed new variable: cardiac_index_from_body_surface_area",
+            "output_dataset_path": null,
+            "stats_cat_path": null,
+            "stats_num_path": null,
+            "corr_matrix_path": null
+        }
+    ]
+}

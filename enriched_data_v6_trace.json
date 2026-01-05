@@ -1,0 +1,73 @@
+{
+    "session_id": "session_20260105_180858_data_1_gauche.xlsx",
+    "source_dataset": "data\\traces\\artifacts\\session_20260105_180858_data_1_gauche.xlsx\\source.xlsx",
+    "steps": [
+        {
+            "timestamp": "2026-01-05T18:08:58.159815",
+            "function": "initial_load",
+            "params": {
+                "filename": "data_1_gauche.xlsx",
+                "source_path": "data\\traces\\artifacts\\session_20260105_180858_data_1_gauche.xlsx\\source.xlsx"
+            },
+            "description": "Uploaded initial dataset: data_1_gauche.xlsx",
+            "output_dataset_path": null,
+            "stats_cat_path": null,
+            "stats_num_path": null,
+            "corr_matrix_path": null
+        },
+        {
+            "timestamp": "2026-01-05T18:10:07.026820",
+            "function": "enrichment",
+            "params": {
+                "enrichment_file_path": "data\\traces\\artifacts\\session_20260105_180858_data_1_gauche.xlsx\\data_2_droite.csv",
+                "strategy": "left",
+                "conflict_resolution": "replace",
+                "identifier": [
+                    "subject_id"
+                ],
+                "add_choice": "Columns"
+            },
+            "description": "Enriched with external data",
+            "output_dataset_path": "data/traces/snapshots\\20260105_181006_enrichment.parquet",
+            "stats_cat_path": null,
+            "stats_num_path": null,
+            "corr_matrix_path": null
+        },
+        {
+            "timestamp": "2026-01-05T18:11:36.798917",
+            "function": "imputation",
+            "params": {
+                "numerical_imputation_method": "MICE",
+                "categorical_imputation_method": "MissForest",
+                "cat_encoder": false,
+                "num_scaler": false,
+                "remainder_columns": "auto",
+                "remainder_strategy": "passthrough",
+                "remainder_threshold": 0.3
+            },
+            "description": "Applied data imputation",
+            "output_dataset_path": "data/traces/snapshots\\20260105_181136_imputation.parquet",
+            "stats_cat_path": null,
+            "stats_num_path": null,
+            "corr_matrix_path": null
+        },
+        {
+            "timestamp": "2026-01-05T18:13:19.050876",
+            "function": "enrichment",
+            "params": {
+                "enrichment_file_path": "data\\traces\\artifacts\\session_20260105_180858_data_1_gauche.xlsx\\data_3_bas.csv",
+                "strategy": "rows",
+                "conflict_resolution": "replace",
+                "identifier": [
+                    "subject_id"
+                ],
+                "add_choice": "Rows"
+            },
+            "description": "Enriched with external data",
+            "output_dataset_path": null,
+            "stats_cat_path": null,
+            "stats_num_path": null,
+            "corr_matrix_path": null
+        }
+    ]
+}

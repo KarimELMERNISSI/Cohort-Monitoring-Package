@@ -1,0 +1,27 @@
+{
+    "session_id": null,
+    "source_dataset": null,
+    "steps": [
+        {
+            "timestamp": "2026-01-05T17:21:28.421183",
+            "function": "variable_transformation",
+            "params": {
+                "transformation_type": "Cluster-Based",
+                "transformation": "K-Means",
+                "columns": [
+                    "ALAT",
+                    "ALP",
+                    "ASAT",
+                    "Cholesterol total"
+                ],
+                "naming_pattern": "Cluster_{method_applied}",
+                "n_clusters": 3
+            },
+            "description": "Applied K-Means",
+            "output_dataset_path": "data/traces/snapshots\\20260105_172128_variable_transformation.parquet",
+            "stats_cat_path": null,
+            "stats_num_path": null,
+            "corr_matrix_path": null
+        }
+    ]
+}

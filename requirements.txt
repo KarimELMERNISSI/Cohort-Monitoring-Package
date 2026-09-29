@@ -80,7 +80,7 @@ comm==0.2.1
 constantly
 contourpy
 
-cryptography==45.0.4
+cryptography==50.0.0
 cssselect
 cycler
 cytoolz

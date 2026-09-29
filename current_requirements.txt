@@ -23,7 +23,7 @@ anaconda-navigator @ file:///C:/b/abs_5co9rfxmmi/croot/anaconda-navigator_174974
 anaconda-project @ file:///C:/b/abs_95s0l9dwvd/croot/anaconda-project_1706049257687/work
 annotated-doc==0.0.4
 annotated-types==0.7.0
-anyio==4.9.0
+anyio==4.14.2
 appdirs==1.4.4
 archspec @ file:///croot/archspec_1709217642129/work
 argon2-cffi @ file:///opt/conda/conda-bld/argon2-cffi_1645000214183/work

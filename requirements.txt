@@ -3,7 +3,7 @@ Babel==2.14.0
 Bottleneck
 Brotli
 Flask
-GitPython==3.1.45
+GitPython==3.1.59
 HeapDict
 Jinja2==3.1.6
 

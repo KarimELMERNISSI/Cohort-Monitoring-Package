@@ -382,7 +382,7 @@ uc-micro-py
 ujson
 umap-learn==0.5.9.post2
 uritemplate==4.2.0
-urllib3==2.3.0
+urllib3==2.8.0
 uvicorn==0.38.0
 validators
 w3lib

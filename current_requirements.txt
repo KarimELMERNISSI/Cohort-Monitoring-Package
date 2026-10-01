@@ -434,7 +434,7 @@ ujson @ file:///C:/b/abs_c93a278xy4/croot/ujson_1717598062082/work
 umap-learn==0.5.9.post2
 
 uritemplate==4.2.0
-urllib3==2.3.0
+urllib3==2.8.0
 uvicorn==0.38.0
 validators @ file:///tmp/build/80754af9/validators_1612286467315/work
 w3lib @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/w3lib_1709162573908/work

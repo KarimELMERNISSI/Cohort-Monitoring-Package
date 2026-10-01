@@ -416,7 +416,7 @@ toml==0.10.2
 tomli @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/tomli_1699472528897/work
 tomlkit @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/tomlkit_1699475633229/work
 toolz @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/toolz_1699474617784/work
-tornado==6.5.2
+tornado==6.5.9
 tqdm==4.67.1
 traitlets @ file:///C:/b/abs_bfsnoxl4pq/croot/traitlets_1718227069245/work
 truststore @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/truststore_1701881385424/work

@@ -118,7 +118,7 @@ future @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/future_16
 
 gensim @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/gensim_1699557139199/work
 gitdb==4.0.12
-GitPython==3.1.45
+GitPython==3.1.62
 google-api-core==2.25.1
 google-api-python-client==2.174.0
 google-auth==2.40.3

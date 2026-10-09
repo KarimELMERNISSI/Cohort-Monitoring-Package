@@ -110,7 +110,7 @@ filetype==1.2.0
 fonttools==4.25.0
 frozendict
 frozenlist==1.8.0
-fsspec==2025.10.0
+fsspec==2026.6.0
 future
 
 
